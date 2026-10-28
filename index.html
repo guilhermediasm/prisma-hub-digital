@@ -128,8 +128,8 @@
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-silver-300">
         <a href="#solucoes" class="hover:text-white transition-colors">Soluções</a>
+        <a href="#portfolio" class="hover:text-white transition-colors">Portfólio & Demos</a>
         <a href="#metodologia" class="hover:text-white transition-colors">O Conceito</a>
-        <a href="#diferenciais" class="hover:text-white transition-colors">Diferenciais</a>
         <a href="#faq" class="hover:text-white transition-colors">Dúvidas Frequentes</a>
       </nav>
 
@@ -366,7 +366,154 @@
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
+  <!-- PORTFOLIO & PROJETOS AO VIVO -->
+  <section id="portfolio" class="py-24 px-6 relative border-t border-white/10 bg-obsidian-900/60">
+    <div class="max-w-6xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-silver-300 font-medium mb-3">
+          <i data-lucide="eye" class="w-3.5 h-3.5 text-white"></i>
+          <span>Demonstrações Reais e Funcionais</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Projetos em Destaque</h2>
+        <p class="text-silver-400 text-sm sm:text-base mt-4">
+          Conheça algumas das plataformas e experiências multimídia desenvolvidas pelo ecossistema Prisma Hub. Teste as aplicações ao vivo.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- Demo 1: Odonto -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border-white/15 group">
+          <div>
+            <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 border-b border-white/10 overflow-hidden">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-white/10 text-white border border-white/10">Saúde & Odontologia</span>
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Lumina Odontologia</h3>
+              <p class="text-xs text-silver-400">Estética Facial & Cuidado Avançado</p>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <p class="text-silver-300 text-sm leading-relaxed">
+                Plataforma pensada para atrair pacientes particulares para tratamentos de alto valor: implantes, alinhadores invisíveis e harmonização orofacial.
+              </p>
+              
+              <ul class="text-xs text-silver-400 space-y-2">
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Agendamento direto no WhatsApp</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Arquitetura de prova social e autoridade</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Carregamento instantâneo via CDN</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://prisma-hub-demo-odonto.vercel.app/" target="_blank" rel="noopener noreferrer" 
+               class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-white/10 hover:bg-white hover:text-obsidian-950 transition-all border border-white/15 shadow-sm group-hover:border-white/40">
+              <span>Testar Site Ao Vivo</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Demo 2: Estética -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border-white/15 group">
+          <div>
+            <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 border-b border-white/10 overflow-hidden">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-white/10 text-white border border-white/10">Beleza & Biomedicina</span>
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Aura Estética Avançada</h3>
+              <p class="text-xs text-silver-400">Beleza Natural, Ciência e Sofisticação</p>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <p class="text-silver-300 text-sm leading-relaxed">
+                Design sensorial de luxo para clínicas de estética, dermatologia e spas. Desenvolvido para aumentar a percepção de valor dos procedimentos.
+              </p>
+              
+              <ul class="text-xs text-silver-400 space-y-2">
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Visual sofisticado com foco em ticket alto</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Apresentação impecável de procedimentos</li>
+                <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i> Pronta para campanhas de Meta Ads</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://prisma-hub-demo-estetica.vercel.app/" target="_blank" rel="noopener noreferrer" 
+               class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-white/10 hover:bg-white hover:text-obsidian-950 transition-all border border-white/15 shadow-sm group-hover:border-white/40">
+              <span>Testar Site Ao Vivo</span>
+              <i data-lucide="external-link" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Demo 3: Audio & Audiovisual IA (CreateSons) -->
+        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border-white/15 group">
+          <div>
+            <div class="relative bg-gradient-to-br from-slate-800 to-slate-900 p-6 border-b border-white/10 overflow-hidden">
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-white/10 text-white border border-white/10">Audiovisual & Áudio Neural</span>
+                <span class="flex h-2 w-2 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">CreateSons Sound Lab</h3>
+              <p class="text-xs text-silver-400">Produção Musical & Identidade Sonora com IA</p>
+            </div>
+            
+            <div class="p-6 space-y-4">
+              <p class="text-silver-300 text-sm leading-relaxed">
+                Desenvolvimento de trilhas sonoras exclusivas, jingles comerciais, sound design e dublagens com inteligência artificial para vídeos e campanhas.
+              </p>
+              
+              <ul class="text-xs text-silver-400 space-y-2">
+                <li class="flex items-center gap-2"><i data-lucide="music" class="w-3.5 h-3.5 text-indigo-400"></i> Trilhas 100% autorais e livres de copyright</li>
+                <li class="flex items-center gap-2"><i data-lucide="sliders" class="w-3.5 h-3.5 text-indigo-400"></i> Síntese neural e procedural de ponta</li>
+                <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i> Perfeita para Reels, anúncios e marcas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <a href="https://m.me/prismahubdigital" target="_blank" rel="noopener noreferrer" 
+               class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-semibold text-white bg-white/10 hover:bg-white hover:text-obsidian-950 transition-all border border-white/15 shadow-sm group-hover:border-white/40">
+              <span>Solicitar Trilha Personalizada</span>
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Banner Informativo -->
+      <div class="mt-12 p-6 rounded-2xl bg-white/[0.03] border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-white shrink-0">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-base font-bold text-white">Precisa de uma estrutura parecida para o seu segmento?</h4>
+            <p class="text-xs text-silver-400 mt-0.5">Adaptamos a identidade visual, os textos e as integrações para qualquer nicho de mercado.</p>
+          </div>
+        </div>
+        <a href="https://m.me/prismahubdigital" target="_blank" class="shrink-0 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-obsidian-950 bg-white hover:bg-silver-200 transition-all">
+          Solicitar Proposta Sob Medida
+        </a>
+      </div>
+
+    </div>
+  </section>
   <section id="faq" class="py-24 px-6 relative border-t border-white/10 bg-obsidian-900/30">
     <div class="max-w-4xl mx-auto">
       
