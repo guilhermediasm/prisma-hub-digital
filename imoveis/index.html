@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossiê Imobiliário Exclusivo | Prisma Hub Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+            cinzel: ['Cinzel', 'serif']
+          },
+          colors: {
+            luxe: {
+              950: '#0a0b0e',
+              900: '#111319',
+              850: '#171a22',
+              800: '#1e222d',
+              700: '#2b3140',
+              gold: '#d4af37',
+              goldLight: '#f3e5ab',
+              goldDark: '#997e28'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0b0e; }
+    ::-webkit-scrollbar-thumb { background: #2b3140; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+    .gold-glow { box-shadow: 0 0 35px -8px rgba(212, 175, 55, 0.35); }
+    .glass-dark {
+      background: rgba(17, 19, 25, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-luxe-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-luxe-gold selection:text-luxe-950">
+
+  <!-- TOP BAR EXECUTIVA & ACESSO AO PAINEL DO CORRETOR -->
+  <header class="fixed top-0 inset-x-0 z-50 glass-dark border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo do Corretor / Imobiliária -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full border border-luxe-gold/50 flex items-center justify-center font-cinzel font-bold text-sm text-luxe-gold bg-luxe-900 shadow-md">
+            EX
+          </div>
+          <div>
+            <span id="topoCorretorNome" class="font-cinzel text-xs tracking-[0.2em] text-luxe-gold uppercase font-bold block leading-none">Guilherme Dias</span>
+            <span id="topoCorretorCreci" class="text-[10px] text-slate-400 font-mono tracking-wider">CRECI 10452-F • Imóveis de Luxo</span>
+          </div>
+        </div>
+
+        <!-- Botões de Ação Principais -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="estante_virtual.html" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/20 transition">
+            <span>🏛️</span> Ver Outros Imóveis
+          </a>
+
+          <button onclick="chamarWhatsApp()" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-500 text-white transition active:scale-95 shadow-md">
+            <span>📲 WhatsApp</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION: FOTO PRINCIPAL & TÍTULO IMPACTANTE -->
+  <section class="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden">
+    
+    <!-- Banner de Destaque -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Título Principal -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+        <div>
+          <h1 id="viewTitulo" class="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-bold tracking-tight leading-[1.1] mb-2">
+            Edifício Costa D'Oro
+          </h1>
+          <p id="viewSubtitulo" class="text-sm sm:text-base text-slate-400 flex items-center gap-2">
+            <span>📍</span> <span id="viewEndereco">Praia da Costa, Vila Velha - ES • A 50 metros da orla</span>
+          </p>
+        </div>
+
+        <!-- Valor do Imóvel -->
+        <div class="lg:text-right shrink-0">
+          <span class="text-xs uppercase tracking-widest font-mono text-slate-400 block mb-0.5">Valor de Venda</span>
+          <div class="flex items-baseline lg:justify-end gap-2">
+            <span id="viewPreco" class="font-serif text-3xl sm:text-4xl text-luxe-gold font-bold">R$ 2.450.000</span>
+          </div>
+          <div class="flex items-center lg:justify-end gap-3 text-xs text-slate-400 font-mono mt-1">
+            <span>Cond: <strong id="viewCondominio" class="text-slate-200">R$ 1.450/mês</strong></span>
+            <span>•</span>
+            <span>IPTU: <strong id="viewIptu" class="text-slate-200">R$ 2.200/ano</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALERIA DE FOTOS INTERATIVA COM LIGHTBOX -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 mb-8">
+        
+        <!-- Foto Principal Gigante (col-span-8) -->
+        <div class="lg:col-span-8 rounded-2xl overflow-hidden relative group cursor-pointer border border-white/10 bg-luxe-900" onclick="abrirFotoDestaque(0)">
+          <img id="imgPrincipal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85" alt="Sala de Estar de Luxo" class="w-full h-[360px] sm:h-[480px] lg:h-[540px] object-cover group-hover:scale-105 transition-all duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-90 group-hover:opacity-75 transition"></div>
+          
+          <!-- Botão Flutuante de Visita Virtual 360° -->
+          <a href="visita_virtual.html" onclick="event.stopPropagation()" class="absolute top-4 right-4 z-20 px-4 py-2.5 rounded-full bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold font-mono text-xs uppercase tracking-wider transition shadow-2xl shadow-amber-500/50 hover:scale-105 flex items-center gap-2 border border-white/40">
+            <span class="text-base animate-spin" style="animation-duration: 4s;">🔄</span> Visita Virtual 360°
+          </a>
+
+          <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+            <div>
+              <span class="text-xs font-mono uppercase px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-luxe-goldLight border border-white/15">Foto 1 de 5</span>
+              <h3 id="captionPrincipal" class="text-white font-serif text-lg sm:text-xl font-bold mt-2">Living Integrado com Pé-Direito Duplo</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grade de 4 Fotos Menores Laterais (col-span-4) -->
+        <div class="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-3">
+          
+          <div class="rounded-xl overflow-hidden relative group cursor-pointer border border-white/10 bg-luxe-900 h-[174px] sm:h-[235px] lg:h-[126px]" onclick="abrirFotoDestaque(1)">
+            <img id="thumb1" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Varanda Gourmet" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
+            <span class="absolute bottom-2 left-2 text-[11px] font-mono text-white px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm">Varanda Gourmet</span>
+          </div>
+
+          <div class="rounded-xl overflow-hidden relative group cursor-pointer border border-white/10 bg-luxe-900 h-[174px] sm:h-[235px] lg:h-[126px]" onclick="abrirFotoDestaque(2)">
+            <img id="thumb2" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80" alt="Suíte Master" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
+            <span class="absolute bottom-2 left-2 text-[11px] font-mono text-white px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm">Suíte Master</span>
+          </div>
+
+          <div class="rounded-xl overflow-hidden relative group cursor-pointer border border-white/10 bg-luxe-900 h-[174px] sm:h-[235px] lg:h-[126px]" onclick="abrirFotoDestaque(3)">
+            <img id="thumb3" src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80" alt="Cozinha Gourmet" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
+            <span class="absolute bottom-2 left-2 text-[11px] font-mono text-white px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm">Cozinha Ilha</span>
+          </div>
+
+          <div class="rounded-xl overflow-hidden relative group cursor-pointer border border-white/10 bg-luxe-900 h-[174px] sm:h-[235px] lg:h-[126px]" onclick="abrirFotoDestaque(4)">
+            <img id="thumb4" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Sala de Banho" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition"></div>
+            <span class="absolute bottom-2 left-2 text-[11px] font-mono text-white px-2 py-0.5 rounded bg-black/60 backdrop-blur-sm">Sala de Banho</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BANNER DE DESTAQUE: VISITA VIRTUAL 360° -->
+      <div class="mb-10 rounded-2xl p-6 sm:p-7 bg-gradient-to-r from-luxe-900 via-[#161c28] to-luxe-900 border-2 border-luxe-gold/50 shadow-2xl relative overflow-hidden flex flex-col sm:flex-row items-center justify-between gap-6 gold-glow">
+        <div class="space-y-1.5 text-center sm:text-left z-10">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-widest bg-luxe-gold/20 text-luxe-gold border border-luxe-gold/30">
+            <span>✨ EXPERIÊNCIA IMERSIVA EM 3D</span>
+          </div>
+          <h3 class="font-serif text-2xl sm:text-3xl text-white font-bold">Faça a Visita Virtual 360° do Imóvel</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl">
+            Caminhe e gire 360° por todos os cômodos (Living com pé-direito duplo, Varanda Gourmet, Suíte Master e Sala de Banho) com rotação livre e planta baixa interativa.
+          </p>
+        </div>
+        <a href="visita_virtual.html" class="z-10 shrink-0 px-8 py-4 rounded-xl bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold uppercase font-mono text-xs tracking-wider transition shadow-xl shadow-amber-500/40 hover:scale-105 active:scale-95 flex items-center gap-2.5">
+          <span class="text-lg">🔄</span> INICIAR VISITA VIRTUAL 360°
+        </a>
+      </div>
+
+      <!-- BARRA DE ESPECIFICAÇÕES LIMPAS (4 PILARES) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
+        <div class="glass-dark p-5 rounded-2xl border border-white/10 text-center">
+          <span class="text-2xl mb-1 block">📐</span>
+          <span class="text-xs uppercase font-mono text-slate-400 block">Área Privativa</span>
+          <strong id="viewMetragem" class="font-serif text-xl sm:text-2xl text-white font-bold">240 m²</strong>
+        </div>
+
+        <div class="glass-dark p-5 rounded-2xl border border-white/10 text-center">
+          <span class="text-2xl mb-1 block">🛏️</span>
+          <span class="text-xs uppercase font-mono text-slate-400 block">Dormitórios</span>
+          <strong id="viewSuites" class="font-serif text-xl sm:text-2xl text-white font-bold">4 Suítes</strong>
+        </div>
+
+        <div class="glass-dark p-5 rounded-2xl border border-white/10 text-center">
+          <span class="text-2xl mb-1 block">🚗</span>
+          <span class="text-xs uppercase font-mono text-slate-400 block">Garagem</span>
+          <strong id="viewVagas" class="font-serif text-xl sm:text-2xl text-white font-bold">3 Vagas Soltas</strong>
+        </div>
+
+        <div class="glass-dark p-5 rounded-2xl border border-white/10 text-center">
+          <span class="text-2xl mb-1 block">🌅</span>
+          <span class="text-xs uppercase font-mono text-slate-400 block">Posição Solar</span>
+          <strong id="viewSol" class="font-serif text-xl sm:text-2xl text-luxe-gold font-bold">Sol da Manhã</strong>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE DESCRIÇÃO, DIFERENCIAIS & O QUE FAZER A PÉ -->
+  <section class="py-12 border-t border-white/10 bg-luxe-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Coluna Esquerda: Descrição & Diferenciais (col-span-8) -->
+        <div class="lg:col-span-8 space-y-10">
+          
+          <!-- Descrição Editorial -->
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mb-4">Sobre o Imóvel</h2>
+            <div id="viewDescricao" class="text-slate-300 text-sm sm:text-base leading-relaxed space-y-3 font-light">
+              <p>
+                Raridade na orla da Praia da Costa. Apartamento exclusivo com acabamento primoroso em mármore travertino e marcenaria de alto padrão sob medida.
+              </p>
+              <p>
+                Planta inteligente com varanda gourmet ampla integrada à sala de 3 ambientes, climatização central em todos os cômodos, fechadura biométrica e vista limpa e definitiva para o mar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Grade de Diferenciais Premium -->
+          <div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-white mb-4">Diferenciais & Tecnologia</h3>
+            <div id="containerDiferenciais" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-200">
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>Varanda Gourmet com churrasqueira a gás</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>Fechadura digital com biometria facial</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>Piso em porcelanato 120x120 e banhos em mármore</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>Lazer completo: Piscina aquecida, sauna e academia</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>3 Vagas cobertas e privativas + Box de praia</span>
+              </div>
+              <div class="flex items-center gap-3 p-3.5 rounded-xl glass-dark border border-white/10">
+                <span class="text-luxe-gold text-base">✦</span>
+                <span>Portaria blindada 24 horas e elevador privativo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- O Que Tem Perto (Localização a Pé) -->
+          <div>
+            <h3 class="font-serif text-xl sm:text-2xl font-bold text-white mb-4">Localização & Proximidades a Pé</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+              <div class="p-4 rounded-xl glass-dark border border-white/10">
+                <span class="text-2xl block mb-1">🏖️</span>
+                <strong class="text-white text-xs block">Praia da Costa</strong>
+                <span class="text-[11px] text-luxe-gold font-mono">2 min a pé (50m)</span>
+              </div>
+              <div class="p-4 rounded-xl glass-dark border border-white/10">
+                <span class="text-2xl block mb-1">🥖</span>
+                <strong class="text-white text-xs block">Padaria Monte Líbano</strong>
+                <span class="text-[11px] text-luxe-gold font-mono">3 min a pé</span>
+              </div>
+              <div class="p-4 rounded-xl glass-dark border border-white/10">
+                <span class="text-2xl block mb-1">🛒</span>
+                <strong class="text-white text-xs block">Carone Gourmet</strong>
+                <span class="text-[11px] text-luxe-gold font-mono">5 min a pé</span>
+              </div>
+              <div class="p-4 rounded-xl glass-dark border border-white/10">
+                <span class="text-2xl block mb-1">🛍️</span>
+                <strong class="text-white text-xs block">Shopping Praia da Costa</strong>
+                <span class="text-[11px] text-luxe-gold font-mono">4 min de carro</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Coluna Direita: Card do Corretor & Simulador Financeiro (col-span-4) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <!-- Card de Apresentação do Corretor -->
+          <div class="glass-dark p-6 rounded-2xl border border-luxe-gold/30 gold-glow relative">
+            <div class="text-center pb-5 border-b border-white/10">
+              <div class="w-20 h-20 rounded-full border-2 border-luxe-gold p-1 mx-auto mb-3 shadow-lg">
+                <img id="cardCorretorFoto" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Foto do Corretor" class="w-full h-full object-cover rounded-full">
+              </div>
+              <h4 id="cardCorretorNome" class="font-serif text-lg font-bold text-white">Guilherme Dias</h4>
+              <p id="cardCorretorCreci" class="text-xs font-mono text-luxe-goldLight">CRECI-ES 10452-F</p>
+              <p class="text-xs text-slate-400 mt-2 font-light">
+                Consultoria Imobiliária de Alto Padrão em Vila Velha e Vitória.
+              </p>
+            </div>
+
+            <div class="pt-5 space-y-3">
+              <button onclick="chamarWhatsApp()" class="w-full py-3.5 px-4 rounded-xl bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold uppercase font-mono text-xs tracking-wider transition shadow-lg flex items-center justify-center gap-2 active:scale-95">
+                <span>📲 Falar no WhatsApp Direto</span>
+              </button>
+              
+              <button onclick="copiarLinkImovel()" class="w-full py-2.5 px-4 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 text-slate-300 font-mono text-xs transition flex items-center justify-center gap-2">
+                <span>📋 Copiar Link Deste Imóvel</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Informações de Atendimento Privativo -->
+          <div class="glass-dark p-6 rounded-2xl border border-white/10 text-xs">
+            <h4 class="font-serif text-sm text-luxe-gold uppercase tracking-wider font-bold mb-3 flex items-center gap-2">
+              <span>🛡️</span> Protocolo de Visita VIP
+            </h4>
+            <ul class="space-y-2.5 text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-luxe-gold">✓</span>
+                <span>Atendimento presencial individual e com total discrição.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-luxe-gold">✓</span>
+                <span>Análise de documentação jurídica e certidões inclusa.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-luxe-gold">✓</span>
+                <span>Estudo de proposta com permuta ou pagamento à vista.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SEÇÃO: OUTROS IMÓVEIS EXCLUSIVOS DA CARTEIRA -->
+      <div class="mt-20 pt-16 border-t border-white/10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-widest bg-luxe-gold/20 text-luxe-gold border border-luxe-gold/30 mb-2">
+              <span>🏛️ PORTFÓLIO VIP</span>
+            </div>
+            <h3 class="font-serif text-3xl sm:text-4xl text-white font-bold">Outros Imóveis da Carteira</h3>
+            <p class="text-sm text-slate-400 mt-1">Conheça outras oportunidades curadas na Praia da Costa e Praia do Canto.</p>
+          </div>
+          
+          <a href="estante_virtual.html" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 text-xs font-mono font-bold uppercase tracking-wider transition hover:scale-105 shadow-lg shadow-amber-500/20">
+            <span>🏛️</span> Ver Estante Virtual Completa →
+          </a>
+        </div>
+
+        <!-- Grade com 3 Imóveis Relacionados da Carteira -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          
+          <!-- Imóvel 2: Palazzo Ducale -->
+          <div class="bg-luxe-900 border border-white/10 rounded-2xl overflow-hidden group hover:border-luxe-gold/60 transition duration-300 flex flex-col">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Residencial Palazzo Ducale" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase text-luxe-gold border border-luxe-gold/30">Praia do Canto</span>
+              <span class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-sm font-serif font-bold text-white">R$ 3.890.000</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h4 class="font-serif text-lg font-bold text-white mb-1">Residencial Palazzo Ducale</h4>
+              <p class="text-xs text-slate-400 mb-4">Rua Aleixo Netto • 310 m² • 4 Suítes • 4 Vagas</p>
+              <div class="mt-auto flex gap-2">
+                <a href="index.html" class="flex-1 py-2.5 rounded-lg bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 text-center font-mono text-xs font-bold transition">
+                  📄 Dossiê
+                </a>
+                <a href="visita_virtual.html" class="flex-1 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-center font-mono text-xs font-bold transition border border-white/10">
+                  🔄 Tour 360°
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imóvel 3: Cobertura Duplex Grand Bay -->
+          <div class="bg-luxe-900 border border-white/10 rounded-2xl overflow-hidden group hover:border-luxe-gold/60 transition duration-300 flex flex-col">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Cobertura Duplex Grand Bay" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase text-luxe-gold border border-luxe-gold/30">Cobertura Orla</span>
+              <span class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-sm font-serif font-bold text-white">R$ 5.600.000</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h4 class="font-serif text-lg font-bold text-white mb-1">Cobertura Duplex Grand Bay</h4>
+              <p class="text-xs text-slate-400 mb-4">Praia da Costa • 480 m² • 5 Suítes • Piscina Privativa</p>
+              <div class="mt-auto flex gap-2">
+                <a href="index.html" class="flex-1 py-2.5 rounded-lg bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 text-center font-mono text-xs font-bold transition">
+                  📄 Dossiê
+                </a>
+                <a href="visita_virtual.html" class="flex-1 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-center font-mono text-xs font-bold transition border border-white/10">
+                  🔄 Tour 360°
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imóvel 4: Infinity Coast -->
+          <div class="bg-luxe-900 border border-white/10 rounded-2xl overflow-hidden group hover:border-luxe-gold/60 transition duration-300 flex flex-col">
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Edifício Infinity Coast" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-mono uppercase text-luxe-gold border border-luxe-gold/30">Praia do Canto</span>
+              <span class="absolute bottom-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-sm font-serif font-bold text-white">R$ 2.950.000</span>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h4 class="font-serif text-lg font-bold text-white mb-1">Edifício Infinity Coast</h4>
+              <p class="text-xs text-slate-400 mb-4">Saturnino de Brito • 215 m² • 3 Suítes • Automação</p>
+              <div class="mt-auto flex gap-2">
+                <a href="index.html" class="flex-1 py-2.5 rounded-lg bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 text-center font-mono text-xs font-bold transition">
+                  📄 Dossiê
+                </a>
+                <a href="visita_virtual.html" class="flex-1 py-2.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-center font-mono text-xs font-bold transition border border-white/10">
+                  🔄 Tour 360°
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Banner Central para a Estante Virtual -->
+        <div class="text-center pb-8">
+          <a href="estante_virtual.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-luxe-gold to-yellow-600 hover:from-yellow-400 hover:to-luxe-gold text-luxe-950 font-bold font-mono text-sm uppercase tracking-wider transition shadow-2xl shadow-amber-500/30 hover:scale-105 active:scale-95">
+            <span>🏛️</span> Explorar Todos os Imóveis na Estante Virtual VIP (6 Imóveis) →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RODAPÉ MOBILE FIXO DE AÇÃO DIRETA (WhatsApp 1-Clique) -->
+  <div class="fixed bottom-0 inset-x-0 p-3 glass-dark border-t border-white/15 z-40 sm:hidden">
+    <div class="flex items-center gap-3">
+      <div class="flex-1">
+        <span class="text-[10px] font-mono text-slate-400 uppercase block">Agendar Visita</span>
+        <strong id="mobileRodapePreco" class="text-luxe-gold text-sm font-serif">R$ 2.450.000</strong>
+      </div>
+      <button onclick="chamarWhatsApp()" class="py-3 px-5 rounded-xl bg-luxe-gold text-luxe-950 font-bold uppercase font-mono text-xs tracking-wider flex items-center gap-2 active:scale-95 shadow-lg">
+        <span>📲 Chamar Corretor</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL / GAVETA DO CORRETOR: PERSONALIZAR OU CRIAR NOVO IMÓVEL -->
+  <div id="modalEditor" class="fixed inset-0 bg-black/80 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-luxe-900 border border-luxe-gold/40 rounded-2xl max-w-2xl w-full p-6 max-h-[92vh] overflow-y-auto shadow-2xl">
+      
+      <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase text-luxe-gold">Modo Administrador do Corretor</span>
+          <h3 class="font-serif text-xl font-bold text-white">Editar Fotos e Detalhes do Imóvel</h3>
+        </div>
+        <button onclick="fecharPainelEditor()" class="text-slate-400 hover:text-white font-mono text-xl">✕</button>
+      </div>
+
+      <form id="formImovel" onsubmit="salvarDadosImovel(event)" class="space-y-4 font-mono text-xs">
+        
+        <!-- Dados Básicos -->
+        <div>
+          <label class="block text-slate-400 mb-1">NOME DO EDIFÍCIO / IMÓVEL *</label>
+          <input type="text" id="editTitulo" required class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3.5 py-2 text-white font-sans focus:outline-none focus:border-luxe-gold">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">ENDEREÇO / BAIRRO *</label>
+            <input type="text" id="editEndereco" required class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3.5 py-2 text-white font-sans focus:outline-none focus:border-luxe-gold">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">VALOR DE VENDA (EX: R$ 2.450.000) *</label>
+            <input type="text" id="editPreco" required class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3.5 py-2 text-luxe-gold font-bold focus:outline-none focus:border-luxe-gold">
+          </div>
+        </div>
+
+        <!-- Custos e Especificações -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">METRAGEM</label>
+            <input type="text" id="editMetragem" placeholder="240 m²" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">SUÍTES / QUARTOS</label>
+            <input type="text" id="editSuites" placeholder="4 Suítes" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">VAGAS</label>
+            <input type="text" id="editVagas" placeholder="3 Vagas" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">SOL</label>
+            <input type="text" id="editSol" placeholder="Sol da Manhã" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 mb-1">CONDOMÍNIO (MÊS)</label>
+            <input type="text" id="editCondominio" placeholder="R$ 1.450/mês" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+          <div>
+            <label class="block text-slate-400 mb-1">IPTU (ANO)</label>
+            <input type="text" id="editIptu" placeholder="R$ 2.200/ano" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+          </div>
+        </div>
+
+        <!-- Descrição -->
+        <div>
+          <label class="block text-slate-400 mb-1">DESCRIÇÃO DETALHADA DO IMÓVEL</label>
+          <textarea id="editDescricao" rows="3" class="w-full bg-luxe-850 border border-white/15 rounded-lg p-3 text-white font-sans text-xs focus:outline-none focus:border-luxe-gold leading-relaxed"></textarea>
+        </div>
+
+        <!-- Upload de Fotos -->
+        <div class="border border-white/15 rounded-xl p-4 bg-luxe-850/50 space-y-3">
+          <label class="block text-luxe-gold uppercase text-[11px] font-bold">Subir Fotos do Apartamento (Do Seu Computador)</label>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <span class="block text-slate-400 mb-1 text-[10px]">FOTO 1 (PRINCIPAL / LIVING):</span>
+              <input type="file" accept="image/*" onchange="processarUploadFoto(event, 0)" class="w-full text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-luxe-700 file:text-white file:text-xs">
+            </div>
+            <div>
+              <span class="block text-slate-400 mb-1 text-[10px]">FOTO 2 (VARANDA GOURMET):</span>
+              <input type="file" accept="image/*" onchange="processarUploadFoto(event, 1)" class="w-full text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-luxe-700 file:text-white file:text-xs">
+            </div>
+            <div>
+              <span class="block text-slate-400 mb-1 text-[10px]">FOTO 3 (SUÍTE MASTER):</span>
+              <input type="file" accept="image/*" onchange="processarUploadFoto(event, 2)" class="w-full text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-luxe-700 file:text-white file:text-xs">
+            </div>
+            <div>
+              <span class="block text-slate-400 mb-1 text-[10px]">FOTO 4 (COZINHA / OUTRO):</span>
+              <input type="file" accept="image/*" onchange="processarUploadFoto(event, 3)" class="w-full text-slate-400 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:bg-luxe-700 file:text-white file:text-xs">
+            </div>
+          </div>
+        </div>
+
+        <!-- Dados do Corretor -->
+        <div class="border-t border-white/10 pt-4">
+          <label class="block text-luxe-gold uppercase text-[11px] font-bold mb-2">Dados do Corretor Responsável</label>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-slate-400 mb-1">NOME DO CORRETOR</label>
+              <input type="text" id="editCorretorNome" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">CRECI</label>
+              <input type="text" id="editCorretorCreci" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-luxe-gold">
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1">WHATSAPP (DDD + NÚMERO)</label>
+              <input type="text" id="editCorretorWhats" placeholder="27999998888" class="w-full bg-luxe-850 border border-white/15 rounded-lg px-3 py-2 text-emerald-400 font-bold focus:outline-none focus:border-luxe-gold">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+          <button type="button" onclick="fecharPainelEditor()" class="px-4 py-2 rounded-lg border border-white/15 text-slate-400 hover:text-white">Cancelar</button>
+          <button type="submit" class="px-6 py-2.5 rounded-lg bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold uppercase transition">Salvar & Atualizar Dossiê</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICAÇÃO -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-luxe-900 border border-luxe-gold/50 text-white px-4 py-3 rounded-xl font-mono text-xs shadow-2xl z-50 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-2">
+    <span class="text-luxe-gold text-base">✓</span>
+    <span id="toastMsg">Mensagem</span>
+  </div>
+
+  <!-- JAVASCRIPT: CONTROLE, PERSISTÊNCIA & FINANCIAMENTO -->
+  <script>
+    // DADOS INICIAIS DO IMÓVEL MODELO (PRAIA DA COSTA - VILA VELHA/ES)
+    const DADOS_PADRAO = {
+      titulo: "Edifício Costa D'Oro",
+      endereco: "Praia da Costa, Vila Velha - ES • A 50 metros da orla",
+      preco: "R$ 2.450.000",
+      valorNumerico: 2450000,
+      metragem: "240 m²",
+      suites: "4 Suítes",
+      vagas: "3 Vagas Soltas",
+      sol: "Sol da Manhã",
+      condominio: "R$ 1.450/mês",
+      iptu: "R$ 2.200/ano",
+      descricao: "Raridade na orla da Praia da Costa. Apartamento exclusivo com acabamento primoroso em mármore travertino e marcenaria de alto padrão sob medida.\n\nPlanta inteligente com varanda gourmet ampla integrada à sala de 3 ambientes, climatização central em todos os cômodos, fechadura biométrica e vista limpa e definitiva para o mar.",
+      corretor: {
+        nome: "Guilherme Dias",
+        creci: "CRECI-ES 10452-F",
+        whats: "27999998888",
+        foto: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80"
+      },
+      fotos: [
+        { url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85", caption: "Living Integrado com Pé-Direito Duplo" },
+        { url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80", caption: "Varanda Gourmet com Vista Mar" },
+        { url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80", caption: "Suíte Master com Closet" },
+        { url: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=800&q=80", caption: "Cozinha em Ilha Planejada" },
+        { url: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", caption: "Sala de Banho com Hidro" }
+      ]
+    };
+
+    let imovel = {};
+
+    window.addEventListener('DOMContentLoaded', () => {
+      carregarDados();
+      renderizarImovel();
+    });
+
+    function carregarDados() {
+      const salvo = localStorage.getItem('prisma_imovel_dossie');
+      if (salvo) {
+        try {
+          imovel = JSON.parse(salvo);
+        } catch(e) {
+          imovel = JSON.parse(JSON.stringify(DADOS_PADRAO));
+        }
+      } else {
+        imovel = JSON.parse(JSON.stringify(DADOS_PADRAO));
+        salvarDados();
+      }
+    }
+
+    function salvarDados() {
+      localStorage.setItem('prisma_imovel_dossie', JSON.stringify(imovel));
+    }
+
+    function renderizarImovel() {
+      document.getElementById('viewTitulo').innerText = imovel.titulo;
+      document.getElementById('viewEndereco').innerText = imovel.endereco;
+      document.getElementById('viewPreco').innerText = imovel.preco;
+      document.getElementById('mobileRodapePreco').innerText = imovel.preco;
+      document.getElementById('viewMetragem').innerText = imovel.metragem;
+      document.getElementById('viewSuites').innerText = imovel.suites;
+      document.getElementById('viewVagas').innerText = imovel.vagas;
+      document.getElementById('viewSol').innerText = imovel.sol;
+      document.getElementById('viewCondominio').innerText = imovel.condominio;
+      document.getElementById('viewIptu').innerText = imovel.iptu;
+
+      // Descrição formatada
+      const descHtml = imovel.descricao.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      document.getElementById('viewDescricao').innerHTML = descHtml;
+
+      // Corretor
+      document.getElementById('topoCorretorNome').innerText = imovel.corretor.nome;
+      document.getElementById('topoCorretorCreci').innerText = `${imovel.corretor.creci} • Imóveis de Luxo`;
+      document.getElementById('cardCorretorNome').innerText = imovel.corretor.nome;
+      document.getElementById('cardCorretorCreci').innerText = imovel.corretor.creci;
+      if (imovel.corretor.foto) {
+        document.getElementById('cardCorretorFoto').src = imovel.corretor.foto;
+      }
+
+      // Fotos
+      if (imovel.fotos && imovel.fotos.length > 0) {
+        document.getElementById('imgPrincipal').src = imovel.fotos[0].url;
+        document.getElementById('captionPrincipal').innerText = imovel.fotos[0].caption || "Foto Principal";
+        
+        if (imovel.fotos[1]) document.getElementById('thumb1').src = imovel.fotos[1].url;
+        if (imovel.fotos[2]) document.getElementById('thumb2').src = imovel.fotos[2].url;
+        if (imovel.fotos[3]) document.getElementById('thumb3').src = imovel.fotos[3].url;
+        if (imovel.fotos[4]) document.getElementById('thumb4').src = imovel.fotos[4].url;
+      }
+    }
+
+    function abrirFotoDestaque(index) {
+      if (!imovel.fotos || !imovel.fotos[index]) return;
+      const f = imovel.fotos[index];
+      document.getElementById('imgPrincipal').src = f.url;
+      document.getElementById('captionPrincipal').innerText = f.caption || `Foto ${index + 1}`;
+      showToast(`Exibindo: ${f.caption}`);
+    }
+
+    // DISPARO WHATSAPP PARA O CORRETOR
+    function chamarWhatsApp() {
+      const num = imovel.corretor.whats.replace(/\D/g, '');
+      const fone = num.startsWith('55') ? num : `55${num}`;
+      
+      let msg = `Olá, ${imovel.corretor.nome}! Tudo bem?\n\n`;
+      msg += `Acessei a apresentação exclusiva do *${imovel.titulo}* (${imovel.preco}) e gostaria de agendar uma visita presencial para conhecer o apartamento.\n\n`;
+      msg += `Como está a sua disponibilidade esta semana?`;
+
+      window.open(`https://api.whatsapp.com/send?phone=${fone}&text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function copiarLinkImovel() {
+      navigator.clipboard.writeText(window.location.href);
+      showToast("Link exclusivo do imóvel copiado!");
+    }
+
+    // EDITOR DO CORRETOR
+    function abrirPainelEditor() {
+      document.getElementById('editTitulo').value = imovel.titulo;
+      document.getElementById('editEndereco').value = imovel.endereco;
+      document.getElementById('editPreco').value = imovel.preco;
+      document.getElementById('editMetragem').value = imovel.metragem;
+      document.getElementById('editSuites').value = imovel.suites;
+      document.getElementById('editVagas').value = imovel.vagas;
+      document.getElementById('editSol').value = imovel.sol;
+      document.getElementById('editCondominio').value = imovel.condominio;
+      document.getElementById('editIptu').value = imovel.iptu;
+      document.getElementById('editDescricao').value = imovel.descricao;
+      
+      document.getElementById('editCorretorNome').value = imovel.corretor.nome;
+      document.getElementById('editCorretorCreci').value = imovel.corretor.creci;
+      document.getElementById('editCorretorWhats').value = imovel.corretor.whats;
+
+      document.getElementById('modalEditor').classList.remove('hidden');
+    }
+
+    function fecharPainelEditor() {
+      document.getElementById('modalEditor').classList.add('hidden');
+    }
+
+    function processarUploadFoto(event, photoIndex) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        if (!imovel.fotos) imovel.fotos = [];
+        if (!imovel.fotos[photoIndex]) {
+          imovel.fotos[photoIndex] = { url: "", caption: `Foto ${photoIndex + 1}` };
+        }
+        imovel.fotos[photoIndex].url = e.target.result;
+        showToast(`Foto ${photoIndex + 1} carregada com sucesso!`);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function salvarDadosImovel(event) {
+      event.preventDefault();
+
+      imovel.titulo = document.getElementById('editTitulo').value.trim();
+      imovel.endereco = document.getElementById('editEndereco').value.trim();
+      imovel.preco = document.getElementById('editPreco').value.trim();
+      imovel.metragem = document.getElementById('editMetragem').value.trim() || "200 m²";
+      imovel.suites = document.getElementById('editSuites').value.trim() || "3 Suítes";
+      imovel.vagas = document.getElementById('editVagas').value.trim() || "2 Vagas";
+      imovel.sol = document.getElementById('editSol').value.trim() || "Sol da Manhã";
+      imovel.condominio = document.getElementById('editCondominio').value.trim() || "R$ 1.200/mês";
+      imovel.iptu = document.getElementById('editIptu').value.trim() || "R$ 1.800/ano";
+      imovel.descricao = document.getElementById('editDescricao').value.trim();
+
+      // Atualiza valor numérico para o simulador
+      const nums = imovel.preco.replace(/\D/g, '');
+      if (nums) imovel.valorNumerico = parseInt(nums);
+
+      imovel.corretor.nome = document.getElementById('editCorretorNome').value.trim() || "Corretor";
+      imovel.corretor.creci = document.getElementById('editCorretorCreci').value.trim() || "CRECI";
+      imovel.corretor.whats = document.getElementById('editCorretorWhats').value.trim() || "27999998888";
+
+      salvarDados();
+      renderizarImovel();
+      fecharPainelEditor();
+      showToast("Dossiê atualizado com sucesso!");
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

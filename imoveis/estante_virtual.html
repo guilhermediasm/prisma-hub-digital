@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique Imobiliária VIP | Estante Virtual de Imóveis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0b0e;
+      --card-bg: #111319;
+      --card-hover: #161922;
+      --accent-gold: #d4af37;
+      --gold-gradient: linear-gradient(135deg, #f7d070 0%, #d4af37 50%, #aa8010 100%);
+      --text-white: #ffffff;
+      --text-muted: #9ca3af;
+      --border-dark: rgba(212, 175, 55, 0.15);
+      --border-subtle: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation */
+    header {
+      background: rgba(10, 11, 14, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-symbol {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid var(--accent-gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .brand-text span {
+      font-size: 11px;
+      color: var(--accent-gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-gold {
+      background: var(--gold-gradient);
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-dark);
+      color: #e5e7eb;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Hero / Broker Authority Banner */
+    .broker-hero {
+      padding: 60px 32px 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 32px;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .broker-avatar-wrap {
+      position: relative;
+    }
+
+    .broker-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+    }
+
+    .broker-verified-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      border: 2px solid var(--bg-dark);
+    }
+
+    .broker-info h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .broker-tags {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tag-creci {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: var(--accent-gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+    }
+
+    .tag-region {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .broker-bio {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    .broker-stats-group {
+      display: flex;
+      gap: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px 28px;
+    }
+
+    .stat-box {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    /* Filter & Search Bar */
+    .controls-container {
+      max-width: 1300px;
+      margin: 30px auto 0;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      background: #11141c;
+      padding: 5px;
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--card-hover);
+      color: var(--accent-gold);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #11141c;
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 0 14px;
+      gap: 10px;
+      width: 320px;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 10px 0;
+      font-size: 13px;
+      outline: none;
+      width: 100%;
+    }
+
+    /* Estante Virtual / Showcase Grid */
+    .showcase-section {
+      max-width: 1300px;
+      margin: 28px auto 80px;
+      padding: 0 32px;
+    }
+
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 24px;
+    }
+
+    .section-title h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .section-title p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 28px;
+    }
+
+    /* Property Card */
+    .property-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .property-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-gold);
+      box-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.15);
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background: #181b24;
+    }
+
+    .card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .property-card:hover .card-thumb {
+      transform: scale(1.05);
+    }
+
+    .badge-exclusive {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(10, 11, 14, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--accent-gold);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-neighborhood {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(10, 11, 14, 0.85);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .card-price-overlay {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      background: rgba(10, 11, 14, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-price-val {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .card-address {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+
+    /* Specs Icons */
+    .specs-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 18px;
+    }
+
+    .spec-item {
+      text-align: center;
+    }
+
+    .spec-val {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+    }
+
+    .spec-lbl {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Card Footer Buttons */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-dossier {
+      flex: 2;
+      background: var(--gold-gradient);
+      color: #000;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-dossier:hover {
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .btn-card-whatsapp {
+      flex: 1;
+      background: rgba(37, 211, 102, 0.12);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      color: #25d366;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+
+    .btn-card-whatsapp:hover {
+      background: #25d366;
+      color: #000;
+    }
+
+    /* Modal: Add Property / Intake Admin */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-box {
+      background: #11141c;
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 650px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 32px;
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .modal-header h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      color: var(--accent-gold);
+    }
+
+    .btn-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      background: #090b10;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .upload-zone {
+      border: 2px dashed rgba(212, 175, 55, 0.3);
+      background: rgba(212, 175, 55, 0.03);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--accent-gold);
+      background: rgba(212, 175, 55, 0.08);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .broker-hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .broker-avatar-wrap {
+        margin: 0 auto;
+      }
+      .broker-tags {
+        justify-content: center;
+      }
+      .broker-stats-group {
+        justify-content: center;
+      }
+      .controls-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <div class="brand-box">
+      <div class="brand-symbol">V</div>
+      <div class="brand-text">
+        <h1>VILLA LUXE</h1>
+        <span>Estante Virtual & Portfólio VIP</span>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-outline" onclick="openBrokerEditModal()">
+        ⚙️ Editar Perfil Corretor
+      </button>
+      <button class="btn-gold" onclick="openAddPropertyModal()">
+        ➕ Adicionar Imóvel à Estante
+      </button>
+    </div>
+  </header>
+
+  <!-- Broker Authority Hero -->
+  <section class="broker-hero">
+    <div class="broker-avatar-wrap">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80" alt="Corretor" class="broker-avatar" id="brokerPhoto">
+      <div class="broker-verified-badge" title="Corretor Verificado">✓</div>
+    </div>
+
+    <div class="broker-info">
+      <h2 id="brokerName">Guilherme Dias</h2>
+      <div class="broker-tags">
+        <span class="tag-creci" id="brokerCreci">CRECI 9845-F / ES</span>
+        <span class="tag-region">📍 Praia da Costa & Praia do Canto</span>
+        <span class="tag-region">💎 Especialista em Alto Padrão</span>
+      </div>
+      <p class="broker-bio" id="brokerBio">
+        Consultor imobiliário especializado nos empreendimentos mais nobres do Espírito Santo. Atendimento exclusivo, com total sigilo, curadoria minuciosa e suporte jurídico completo na sua aquisição.
+      </p>
+    </div>
+
+    <div class="broker-stats-group">
+      <div class="stat-box">
+        <div class="stat-num" id="statPortfolioCount">6</div>
+        <div class="stat-label">Exclusividades</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">+R$ 38M</div>
+        <div class="stat-label">Sob Gestão</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Privacidade</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Controls -->
+  <div class="controls-container">
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterProperties('all', this)">Todos (6)</button>
+      <button class="tab-btn" onclick="filterProperties('praia_da_costa', this)">Praia da Costa</button>
+      <button class="tab-btn" onclick="filterProperties('praia_do_canto', this)">Praia do Canto</button>
+      <button class="tab-btn" onclick="filterProperties('cobertura', this)">Coberturas</button>
+    </div>
+    
+    <div class="search-box">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar por condomínio, metragem ou valor..." oninput="handleSearch(this.value)">
+    </div>
+  </div>
+
+  <!-- Showcase / Estante Virtual Grid -->
+  <main class="showcase-section">
+    <div class="section-header-row">
+      <div class="section-title">
+        <h3>Coleção Curada de Imóveis</h3>
+        <p>Apresentações digitais completas para clientes de alta exigência.</p>
+      </div>
+      <button class="btn-outline" onclick="shareCatalogWhatsApp()">
+        📱 Compartilhar Catálogo VIP no WhatsApp
+      </button>
+    </div>
+
+    <!-- Properties Cards Grid -->
+    <div class="properties-grid" id="propertiesGrid">
+      <!-- Cards renderizados dinamicamente via JS -->
+    </div>
+  </main>
+
+  <!-- Modal: Adicionar Imóvel à Estante -->
+  <div class="modal-backdrop" id="modalAddProperty">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Cadastrar Novo Imóvel na Estante</h3>
+        <button class="btn-close" onclick="closeModal('modalAddProperty')">&times;</button>
+      </div>
+
+      <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <p style="font-size: 24px; margin-bottom: 6px;">📷</p>
+        <p style="font-weight: 700; color: var(--accent-gold);">Selecione a Foto Principal do Imóvel</p>
+        <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Clique para carregar uma imagem do seu computador (JPG, PNG)</p>
+        <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
+      </div>
+      <div id="imagePreviewBox" style="display:none; margin-bottom: 16px; text-align:center;">
+        <img id="imagePreview" style="max-height: 140px; border-radius: 8px; border: 1px solid var(--accent-gold);">
+      </div>
+
+      <div class="form-group">
+        <label>Nome do Edifício / Empreendimento:</label>
+        <input type="text" id="newTitle" placeholder="Ex: Edifício Costa D'Oro">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Bairro & Cidade:</label>
+          <input type="text" id="newAddress" placeholder="Ex: Praia da Costa, Vila Velha">
+        </div>
+        <div class="form-group">
+          <label>Categoria:</label>
+          <select id="newCategory">
+            <option value="praia_da_costa">Praia da Costa</option>
+            <option value="praia_do_canto">Praia do Canto</option>
+            <option value="cobertura">Coberturas</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Valor de Venda (R$):</label>
+          <input type="text" id="newPrice" placeholder="Ex: R$ 2.450.000">
+        </div>
+        <div class="form-group">
+          <label>Área Privativa (m²):</label>
+          <input type="text" id="newArea" placeholder="Ex: 240 m²">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Suítes / Quartos:</label>
+          <input type="text" id="newSuites" placeholder="Ex: 4 Suítes">
+        </div>
+        <div class="form-group">
+          <label>Vagas de Garagem:</label>
+          <input type="text" id="newVagas" placeholder="Ex: 3 Vagas">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Diferencial / Destaque:</label>
+        <input type="text" id="newDestaque" placeholder="Ex: Sol da manhã, varanda gourmet integrada, vista eterna para o mar">
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap: 12px; margin-top: 20px;">
+        <button class="btn-outline" onclick="closeModal('modalAddProperty')">Cancelar</button>
+        <button class="btn-gold" onclick="saveNewProperty()">Salvar na Estante</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initial Luxury Properties Collection
+    const defaultProperties = [
+      {
+        id: 1,
+        title: "Edifício Costa D'Oro",
+        address: "Av. Gil Veloso, Praia da Costa - Vila Velha",
+        category: "praia_da_costa",
+        price: "R$ 2.450.000",
+        area: "240 m²",
+        suites: "4 Suítes",
+        vagas: "3 Vagas",
+        condo: "R$ 1.650/mês",
+        badge: "Frente Mar",
+        highlight: "Sol da manhã, varanda gourmet com fechamento em vidro e vista definitiva.",
+        image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+        dossierLink: "index.html"
+      },
+      {
+        id: 2,
+        title: "Residencial Palazzo Ducale",
+        address: "Rua Aleixo Netto, Praia do Canto - Vitória",
+        category: "praia_do_canto",
+        price: "R$ 3.890.000",
+        area: "310 m²",
+        suites: "4 Suítes",
+        vagas: "4 Vagas",
+        condo: "R$ 2.100/mês",
+        badge: "Exclusivo",
+        highlight: "Acabamento em mármore importado, adega climatizada e lazer estilo resort.",
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        dossierLink: "index.html"
+      },
+      {
+        id: 3,
+        title: "Cobertura Duplex Grand Bay",
+        address: "Praia da Costa (Orla) - Vila Velha",
+        category: "cobertura",
+        price: "R$ 5.600.000",
+        area: "480 m²",
+        suites: "5 Suítes",
+        vagas: "5 Vagas",
+        condo: "R$ 3.200/mês",
+        badge: "Cobertura",
+        highlight: "Piscina privativa aquecida com borda infinita e espaço gourmet com churrasqueira parrilha.",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+        dossierLink: "index.html"
+      },
+      {
+        id: 4,
+        title: "Edifício Infinity Coast",
+        address: "Av. Saturnino de Brito, Praia do Canto - Vitória",
+        category: "praia_do_canto",
+        price: "R$ 2.950.000",
+        area: "215 m²",
+        suites: "3 Suítes",
+        vagas: "3 Vagas",
+        condo: "R$ 1.800/mês",
+        badge: "Alto Luxo",
+        highlight: "1 por andar, automação residencial completa de som e iluminação.",
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        dossierLink: "index.html"
+      },
+      {
+        id: 5,
+        title: "Edifício Terraço Atlântico",
+        address: "Parque das Castanheiras, Praia da Costa",
+        category: "praia_da_costa",
+        price: "R$ 1.980.000",
+        area: "185 m²",
+        suites: "3 Suítes",
+        vagas: "2 Vagas",
+        condo: "R$ 1.250/mês",
+        badge: "Oportunidade",
+        highlight: "Área mais nobre e charmosa da Praia da Costa, próximo aos melhores bistrôs.",
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        dossierLink: "index.html"
+      },
+      {
+        id: 6,
+        title: "Penthouse Reserva do Canal",
+        address: "Ilha do Frade / Praia do Canto",
+        category: "cobertura",
+        price: "R$ 7.200.000",
+        area: "540 m²",
+        suites: "4 Suítes Master",
+        vagas: "6 Vagas",
+        condo: "R$ 4.100/mês",
+        badge: "Super Luxo",
+        highlight: "Vista panorâmica 360° para o mar e para o Convento da Penha. Píer privativo.",
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
+        dossierLink: "index.html"
+      }
+    ];
+
+    // Local Storage Data Management
+    let properties = JSON.parse(localStorage.getItem('luxury_properties_shelf')) || defaultProperties;
+    let uploadedImageBase64 = null;
+    let currentCategory = 'all';
+
+    function renderProperties(list) {
+      const container = document.getElementById('propertiesGrid');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: #9ca3af;">
+          <p style="font-size: 32px; margin-bottom: 8px;">🏛️</p>
+          <p style="font-size: 16px; font-weight: 600;">Nenhum imóvel encontrado nessa categoria.</p>
+        </div>`;
+        return;
+      }
+
+      list.forEach(prop => {
+        const card = document.createElement('article');
+        card.className = 'property-card';
+        card.innerHTML = `
+          <div class="card-thumb-wrap">
+            <img src="${prop.image}" alt="${prop.title}" class="card-thumb">
+            <span class="badge-exclusive">${prop.badge || 'Exclusivo'}</span>
+            <span class="badge-neighborhood">${prop.category.replace('_', ' ').toUpperCase()}</span>
+            <div class="card-price-overlay">
+              <span class="card-price-val">${prop.price}</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">${prop.title}</h4>
+            <div class="card-address">📍 ${prop.address}</div>
+            
+            <div class="specs-row">
+              <div class="spec-item">
+                <span class="spec-val">${prop.area}</span>
+                <span class="spec-lbl">Área</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">${prop.suites}</span>
+                <span class="spec-lbl">Quartos</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">${prop.vagas}</span>
+                <span class="spec-lbl">Garagem</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-val">Sol Manhã</span>
+                <span class="spec-lbl">Posição</span>
+              </div>
+            </div>
+
+            <p style="font-size: 12px; color: #9ca3af; line-height: 1.5; margin-bottom: 18px;">
+              ${prop.highlight}
+            </p>
+
+            <div class="card-actions">
+              <a href="${prop.dossierLink}" class="btn-dossier" style="flex:1;">
+                📄 Dossiê
+              </a>
+              <a href="visita_virtual.html" class="btn-dossier" style="flex:1; background: #1f2433; color: var(--accent-gold); border: 1px solid var(--border-dark);">
+                🔄 Tour 360°
+              </a>
+              <a href="https://wa.me/5527999999999?text=${encodeURIComponent('Olá! Tenho interesse no ' + prop.title + ' (' + prop.price + '). Gostaria de receber mais detalhes e agendar uma visita privativa.')}" target="_blank" class="btn-card-whatsapp">
+                💬 WhatsApp
+              </a>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      document.getElementById('statPortfolioCount').innerText = properties.length;
+    }
+
+    function filterProperties(category, btnElement) {
+      currentCategory = category;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      if (category === 'all') {
+        renderProperties(properties);
+      } else {
+        const filtered = properties.filter(p => p.category === category);
+        renderProperties(filtered);
+      }
+    }
+
+    function handleSearch(query) {
+      const q = query.toLowerCase();
+      const filtered = properties.filter(p => 
+        p.title.toLowerCase().includes(q) || 
+        p.address.toLowerCase().includes(q) || 
+        p.price.toLowerCase().includes(q)
+      );
+      renderProperties(filtered);
+    }
+
+    // Modal Operations
+    function openAddPropertyModal() {
+      document.getElementById('modalAddProperty').style.display = 'flex';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          uploadedImageBase64 = event.target.result;
+          document.getElementById('imagePreview').src = uploadedImageBase64;
+          document.getElementById('imagePreviewBox').style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function saveNewProperty() {
+      const title = document.getElementById('newTitle').value.trim();
+      const address = document.getElementById('newAddress').value.trim();
+      const category = document.getElementById('newCategory').value;
+      const price = document.getElementById('newPrice').value.trim();
+      const area = document.getElementById('newArea').value.trim();
+      const suites = document.getElementById('newSuites').value.trim();
+      const vagas = document.getElementById('newVagas').value.trim();
+      const highlight = document.getElementById('newDestaque').value.trim();
+
+      if (!title || !price) {
+        alert('Por favor, informe ao menos o Nome do Empreendimento e o Valor.');
+        return;
+      }
+
+      const newProperty = {
+        id: Date.now(),
+        title: title,
+        address: address || "Praia da Costa, Vila Velha",
+        category: category,
+        price: price,
+        area: area || "200 m²",
+        suites: suites || "3 Suítes",
+        vagas: vagas || "2 Vagas",
+        condo: "Consulte",
+        badge: "Novo",
+        highlight: highlight || "Excelente oportunidade de alto padrão.",
+        image: uploadedImageBase64 || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+        dossierLink: "index.html"
+      };
+
+      properties.unshift(newProperty);
+      localStorage.setItem('luxury_properties_shelf', JSON.stringify(properties));
+      renderProperties(properties);
+      closeModal('modalAddProperty');
+      alert(`✅ Imóvel "${title}" adicionado à sua Estante Virtual com sucesso!`);
+    }
+
+    function shareCatalogWhatsApp() {
+      const text = `Olá! Segue meu portfólio exclusivo de imóveis de alto padrão na Praia da Costa e Praia do Canto:\n\nConfira os dossiês completos e agende sua visita privativa.`;
+      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    function openBrokerEditModal() {
+      const newName = prompt("Nome do Corretor:", document.getElementById('brokerName').innerText);
+      if (newName) {
+        document.getElementById('brokerName').innerText = newName;
+      }
+      const newCreci = prompt("CRECI do Corretor:", document.getElementById('brokerCreci').innerText);
+      if (newCreci) {
+        document.getElementById('brokerCreci').innerText = newCreci;
+      }
+    }
+
+    // Initial render
+    renderProperties(properties);
+  </script>
+</body>
+</html>
