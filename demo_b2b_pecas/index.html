@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal B2B de Peças Industriais & Linha Pesada | Polo CIVIT Serra-ES</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            industrial: {
+              900: '#0c0d0e',
+              850: '#121417',
+              800: '#181b20',
+              700: '#22262d',
+              600: '#323742',
+              500: '#4b5363',
+              400: '#717b8f',
+              300: '#9aa3b5',
+              200: '#c5cbdb',
+              100: '#e7eaf2',
+              50: '#f4f6fa'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Estilo industrial sóbrio e minimalista */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #121417; }
+    ::-webkit-scrollbar-thumb { background: #323742; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4b5363; }
+    .blueprint-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-industrial-900 text-industrial-100 min-h-screen font-sans antialiased blueprint-grid selection:bg-industrial-600 selection:text-white">
+
+  <!-- TOP BAR INSTITUCIONAL -->
+  <header class="border-b border-industrial-700 bg-industrial-850 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Localização Polo CIVIT -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-industrial-700 border border-industrial-600 flex items-center justify-center font-mono font-bold text-lg text-white">
+            ⚙️
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold tracking-tight text-white text-base uppercase">Distribuidora Civit B2B</span>
+              <span class="font-mono text-xs px-2 py-0.5 border border-industrial-600 bg-industrial-800 text-industrial-300">POLO SERRA-ES</span>
+            </div>
+            <p class="text-xs text-industrial-400 font-mono">Consulta e Cotação Técnica para Oficinas & Frotas</p>
+          </div>
+        </div>
+
+        <!-- Ações do Topo -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button onclick="toggleHowItWorks()" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono border border-industrial-700 hover:border-industrial-500 bg-industrial-800 text-industrial-300 hover:text-white transition">
+            <span>ℹ️</span> Como Funciona o Fluxo
+          </button>
+          
+          <button onclick="openModalCadastro()" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide border border-industrial-500 bg-industrial-700 hover:bg-industrial-600 text-white transition shadow-sm">
+            <span>+</span> Cadastrar Peça
+          </button>
+
+          <button onclick="openDrawerCotacao()" class="relative inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide bg-white text-industrial-900 hover:bg-industrial-200 transition">
+            <span>📋 Lista de Cotação</span>
+            <span id="badgeCotacaoCount" class="font-mono bg-industrial-900 text-white px-1.5 py-0.2 rounded text-[11px]">0</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- BANNER EXPLICATIVO: FLUXO DE COMO FUNCIONA (COLAPSÁVEL) -->
+  <section id="howItWorksSection" class="border-b border-industrial-700 bg-industrial-850/90 py-5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xs font-mono uppercase tracking-wider text-industrial-400 font-semibold flex items-center gap-2">
+          <span class="inline-block w-2 h-2 bg-emerald-500 rounded-full"></span>
+          Arquitetura Operacional do Catálogo B2B (Sem Exibição de Preços)
+        </h3>
+        <button onclick="toggleHowItWorks()" class="text-xs font-mono text-industrial-400 hover:text-white">✕ Fechar</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        
+        <div class="border border-industrial-700 bg-industrial-800/80 p-3.5 relative">
+          <div class="font-mono text-xs text-industrial-400 mb-1">ETAPA 01</div>
+          <h4 class="font-bold text-sm text-white mb-1">Busca por OEM / SKU</h4>
+          <p class="text-xs text-industrial-300 leading-relaxed">
+            O mecânico ou comprador pesquisa o código gravado na peça ou o modelo do veículo sem precisar ligar no televendas.
+          </p>
+        </div>
+
+        <div class="border border-industrial-700 bg-industrial-800/80 p-3.5 relative">
+          <div class="font-mono text-xs text-industrial-400 mb-1">ETAPA 02</div>
+          <h4 class="font-bold text-sm text-white mb-1">Seleção Sem Preço</h4>
+          <p class="text-xs text-industrial-300 leading-relaxed">
+            Os preços não ficam expostos publicamente. O cliente apenas seleciona os itens e quantidades para orçar.
+          </p>
+        </div>
+
+        <div class="border border-industrial-700 bg-industrial-800/80 p-3.5 relative">
+          <div class="font-mono text-xs text-industrial-400 mb-1">ETAPA 03</div>
+          <h4 class="font-bold text-sm text-white mb-1">Disparo ao Balcão CIVIT</h4>
+          <p class="text-xs text-industrial-300 leading-relaxed">
+            Com 1 clique, o pedido é formatado e enviado ao WhatsApp ou ERP do balcão já com CNPJ, SKU e quantidades.
+          </p>
+        </div>
+
+        <div class="border border-industrial-700 bg-industrial-800/80 p-3.5 relative">
+          <div class="font-mono text-xs text-industrial-400 mb-1">ETAPA 04</div>
+          <h4 class="font-bold text-sm text-white mb-1">Separação no Galpão</h4>
+          <p class="text-xs text-industrial-300 leading-relaxed">
+            O estoquista recebe a localização da prateleira (Rua/Prateleira) e já prepara para retirada ou envio imediato.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAINEL DE CONTROLE / FILTROS E PESQUISA -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    
+    <!-- Filtros de Busca -->
+    <div class="bg-industrial-850 border border-industrial-700 p-4 mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-3">
+        
+        <!-- Campo de Pesquisa Textual -->
+        <div class="lg:col-span-6 relative">
+          <label class="block font-mono text-[11px] uppercase tracking-wider text-industrial-400 mb-1">Pesquisar Código OEM, SKU, Nome ou Veículo</label>
+          <div class="relative">
+            <input 
+              type="text" 
+              id="inputSearch" 
+              oninput="filtrarPecas()" 
+              placeholder="Ex: 0044206020, Turbocompressor, Scania R440, SKF..."
+              class="w-full bg-industrial-800 border border-industrial-600 px-3.5 py-2.5 text-sm text-white placeholder-industrial-500 font-mono focus:outline-none focus:border-white transition"
+            >
+            <span class="absolute right-3 top-3 text-industrial-400 text-xs font-mono">ESC p/ limpar</span>
+          </div>
+        </div>
+
+        <!-- Filtro por Categoria de Sistema -->
+        <div class="lg:col-span-3">
+          <label class="block font-mono text-[11px] uppercase tracking-wider text-industrial-400 mb-1">Sistema Automotivo / Categoria</label>
+          <select 
+            id="selectCategory" 
+            onchange="filtrarPecas()" 
+            class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-white transition"
+          >
+            <option value="">Todas as Categorias</option>
+            <option value="Motor & Injeção">Motor & Injeção</option>
+            <option value="Transmissão & Câmbio">Transmissão & Câmbio</option>
+            <option value="Freios & Suspensão">Freios & Suspensão</option>
+            <option value="Arrefecimento & Térmico">Arrefecimento & Térmico</option>
+            <option value="Rolamentos & Vedação">Rolamentos & Vedação</option>
+          </select>
+        </div>
+
+        <!-- Filtro por Disponibilidade no Galpão -->
+        <div class="lg:col-span-3">
+          <label class="block font-mono text-[11px] uppercase tracking-wider text-industrial-400 mb-1">Disponibilidade no Galpão</label>
+          <select 
+            id="selectStock" 
+            onchange="filtrarPecas()" 
+            class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2.5 text-sm text-white font-mono focus:outline-none focus:border-white transition"
+          >
+            <option value="">Todos os Status</option>
+            <option value="Pronta Entrega (Civit I/II)">Pronta Entrega (Civit I/II)</option>
+            <option value="Em Trânsito (24 Horas)">Em Trânsito (24 Horas)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Métricas Rápidas do Catálogo -->
+      <div class="mt-4 pt-3 border-t border-industrial-700/80 flex flex-wrap items-center justify-between text-xs font-mono text-industrial-400 gap-2">
+        <div class="flex items-center gap-4">
+          <span>Itens no Catálogo: <strong id="totalCount" class="text-white">0</strong></span>
+          <span>Exibindo: <strong id="filteredCount" class="text-white">0</strong></span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="resetarFiltros()" class="hover:text-white underline underline-offset-2">Redefinir Filtros</button>
+          <span>•</span>
+          <button onclick="exportarBancoJSON()" class="hover:text-white underline underline-offset-2">Exportar Banco (JSON)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRID DE PEÇAS / CARDS TÉCNICOS -->
+    <div id="gridPecas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Inserido dinamicamente via JavaScript -->
+    </div>
+
+    <!-- ESTADO VAZIO CASO NADA ENCONTRADO -->
+    <div id="emptyState" class="hidden text-center py-16 border border-dashed border-industrial-700 bg-industrial-850 p-6">
+      <div class="font-mono text-3xl mb-2 text-industrial-500">∅</div>
+      <h3 class="font-bold text-white text-base uppercase font-mono">Nenhuma peça encontrada</h3>
+      <p class="text-sm text-industrial-400 max-w-md mx-auto mt-1 mb-4">
+        Não foram encontrados itens com os filtros informados. Tente limpar a busca ou cadastre uma nova peça técnica.
+      </p>
+      <button onclick="openModalCadastro()" class="px-4 py-2 bg-industrial-700 border border-industrial-500 text-xs font-mono uppercase font-bold text-white hover:bg-industrial-600">
+        + Cadastrar Esta Peça Agora
+      </button>
+    </div>
+
+  </main>
+
+  <!-- MODAL: FICHA TÉCNICA DETALHADA -->
+  <div id="modalFicha" class="fixed inset-0 bg-black/80 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-industrial-850 border border-industrial-600 max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-start justify-between border-b border-industrial-700 pb-4 mb-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="fichaCategoryBadge" class="font-mono text-[10px] px-2 py-0.5 border border-industrial-600 bg-industrial-800 text-industrial-300 uppercase"></span>
+            <span id="fichaStockBadge" class="font-mono text-[10px] px-2 py-0.5 border border-industrial-600 text-emerald-400 uppercase"></span>
+          </div>
+          <h2 id="fichaNome" class="text-lg font-bold text-white tracking-tight uppercase"></h2>
+          <p id="fichaMarca" class="font-mono text-xs text-industrial-400"></p>
+        </div>
+        <button onclick="closeModalFicha()" class="text-industrial-400 hover:text-white font-mono text-lg">✕</button>
+      </div>
+
+      <!-- Ilustração / Foto Técnica -->
+      <div class="bg-industrial-900 border border-industrial-700 p-4 mb-4 flex items-center justify-center min-h-[180px]">
+        <div id="fichaImagemContainer" class="w-full max-h-56 flex items-center justify-center">
+          <!-- Renderizado via JS -->
+        </div>
+      </div>
+
+      <!-- Dados Técnicos em Tabela Industrial -->
+      <div class="border border-industrial-700 mb-4 divide-y divide-industrial-700 font-mono text-xs">
+        <div class="grid grid-cols-3 p-2.5 bg-industrial-800/50">
+          <span class="text-industrial-400 uppercase">Código OEM / Original:</span>
+          <span id="fichaOEM" class="col-span-2 text-white font-bold"></span>
+        </div>
+        <div class="grid grid-cols-3 p-2.5">
+          <span class="text-industrial-400 uppercase">SKU / Ref. Interna:</span>
+          <span id="fichaSKU" class="col-span-2 text-white"></span>
+        </div>
+        <div class="grid grid-cols-3 p-2.5 bg-industrial-800/50">
+          <span class="text-industrial-400 uppercase">Aplicações / Modelos:</span>
+          <span id="fichaAplicacao" class="col-span-2 text-white"></span>
+        </div>
+        <div class="grid grid-cols-3 p-2.5">
+          <span class="text-industrial-400 uppercase">Posição no Galpão Civit:</span>
+          <span id="fichaLocalizacao" class="col-span-2 text-white"></span>
+        </div>
+        <div class="grid grid-cols-3 p-2.5 bg-industrial-800/50">
+          <span class="text-industrial-400 uppercase">Observações Técnicas:</span>
+          <span id="fichaObs" class="col-span-2 text-industrial-300"></span>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-3 pt-2">
+        <button onclick="closeModalFicha()" class="px-4 py-2 border border-industrial-700 font-mono text-xs text-industrial-300 hover:text-white">
+          Fechar
+        </button>
+        <button id="btnFichaAdicionar" class="px-4 py-2 bg-white text-industrial-900 font-bold uppercase text-xs hover:bg-industrial-200 transition">
+          + Adicionar à Lista de Cotação
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: CADASTRO DE NOVA PEÇA TÉCNICA -->
+  <div id="modalCadastro" class="fixed inset-0 bg-black/80 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-industrial-850 border border-industrial-600 max-w-xl w-full p-6 max-h-[92vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-industrial-700 pb-3 mb-4">
+        <div>
+          <h2 class="text-base font-bold text-white tracking-tight uppercase font-mono">+ Cadastro Técnico de Peça B2B</h2>
+          <p class="text-xs text-industrial-400">Adicione ao inventário do polo logístico sem expor preços</p>
+        </div>
+        <button onclick="closeModalCadastro()" class="text-industrial-400 hover:text-white font-mono text-lg">✕</button>
+      </div>
+
+      <form id="formCadastroPeca" onsubmit="salvarNovaPeca(event)" class="space-y-3 font-mono text-xs">
+        
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-industrial-400 mb-1">CÓDIGO OEM (ORIGINAL) *</label>
+            <input type="text" id="cadOEM" required placeholder="Ex: 0044206020" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+          </div>
+          <div>
+            <label class="block text-industrial-400 mb-1">SKU / CÓDIGO INTERNO *</label>
+            <input type="text" id="cadSKU" required placeholder="Ex: ALB-9402" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-industrial-400 mb-1">DESCRIÇÃO DA PEÇA *</label>
+          <input type="text" id="cadNome" required placeholder="Ex: Kit Embreagem Completo com Rolamento" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white font-sans text-sm">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-industrial-400 mb-1">FABRICANTE / MARCA *</label>
+            <input type="text" id="cadMarca" required placeholder="Ex: Sachs, Eaton, SKF, Mahle" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+          </div>
+          <div>
+            <label class="block text-industrial-400 mb-1">SISTEMA AUTOMOTIVO *</label>
+            <select id="cadCategoria" required class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+              <option value="Motor & Injeção">Motor & Injeção</option>
+              <option value="Transmissão & Câmbio">Transmissão & Câmbio</option>
+              <option value="Freios & Suspensão">Freios & Suspensão</option>
+              <option value="Arrefecimento & Térmico">Arrefecimento & Térmico</option>
+              <option value="Rolamentos & Vedação">Rolamentos & Vedação</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-industrial-400 mb-1">VEÍCULOS / MODELOS COMPATÍVEIS *</label>
+          <input type="text" id="cadAplicacao" required placeholder="Ex: Mercedes-Benz Actros 2651, Axor 2544 (2018-2023)" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white font-sans text-sm">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-industrial-400 mb-1">DISPONIBILIDADE *</label>
+            <select id="cadEstoque" required class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+              <option value="Pronta Entrega (Civit I/II)">Pronta Entrega (Civit I/II)</option>
+              <option value="Em Trânsito (24 Horas)">Em Trânsito (24 Horas)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-industrial-400 mb-1">LOCALIZAÇÃO / PRATELEIRA</label>
+            <input type="text" id="cadLocalizacao" placeholder="Ex: Galpão 01 - Rua D - Prat. 18" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-industrial-400 mb-1">FOTO OU ESQUEMA TÉCNICO (URL OU ARQUIVO)</label>
+          <div class="flex gap-2">
+            <input type="text" id="cadImagemURL" placeholder="Cole a URL da imagem técnica (opcional)" class="flex-1 bg-industrial-800 border border-industrial-600 px-3 py-2 text-white focus:outline-none focus:border-white text-xs">
+            <label class="px-3 py-2 border border-industrial-600 bg-industrial-700 hover:bg-industrial-600 text-white cursor-pointer uppercase text-[11px] whitespace-nowrap">
+              📁 Subir Foto
+              <input type="file" id="cadArquivoFoto" accept="image/*" class="hidden" onchange="carregarFotoBase64(event)">
+            </label>
+          </div>
+          <p id="cadPreviewStatus" class="text-[10px] text-industrial-400 mt-1">Se não enviar imagem, será gerado automaticamente um diagrama técnico de engenharia.</p>
+        </div>
+
+        <div>
+          <label class="block text-industrial-400 mb-1">OBSERVAÇÕES TÉCNICAS ADICIONAIS</label>
+          <textarea id="cadObs" rows="2" placeholder="Ex: Inclui kit de travas, guarnições e certificado de garantia." class="w-full bg-industrial-800 border border-industrial-600 px-3 py-1.5 text-white focus:outline-none focus:border-white font-sans text-xs"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-industrial-700">
+          <button type="button" onclick="closeModalCadastro()" class="px-4 py-2 border border-industrial-700 text-industrial-300 hover:text-white">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2 bg-white text-industrial-900 font-bold uppercase hover:bg-industrial-200 transition">
+            Gravar Peça no Catálogo
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- DRAWER / LATERAL: LISTA DE COTAÇÃO B2B (SEM PREÇOS) -->
+  <div id="drawerCotacao" class="fixed inset-y-0 right-0 w-full sm:w-[460px] bg-industrial-850 border-l border-industrial-600 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+    
+    <!-- Topo da Cotação -->
+    <div class="p-4 border-b border-industrial-700 flex items-center justify-between bg-industrial-800">
+      <div>
+        <h3 class="font-bold text-white text-sm uppercase font-mono tracking-tight flex items-center gap-2">
+          <span>📋</span> Lista de Cotação B2B
+        </h3>
+        <p class="text-xs text-industrial-400 font-mono">Disparo Direto ao Balcão da Distribuidora</p>
+      </div>
+      <button onclick="closeDrawerCotacao()" class="text-industrial-400 hover:text-white font-mono text-lg">✕</button>
+    </div>
+
+    <!-- Lista de Itens Adicionados -->
+    <div id="cotacaoItensContainer" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Renderizado via JS -->
+    </div>
+
+    <!-- Dados do Solicitante & Disparo WhatsApp -->
+    <div class="p-4 border-t border-industrial-700 bg-industrial-850 space-y-3 font-mono text-xs">
+      
+      <div>
+        <label class="block text-industrial-400 text-[11px] mb-1">NOME DA OFICINA / FROTISTA *</label>
+        <input type="text" id="cotNomeCliente" placeholder="Ex: Auto Mecânica Vitória Ltda" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-1.5 text-white focus:outline-none focus:border-white">
+      </div>
+
+      <div class="grid grid-cols-2 gap-2">
+        <div>
+          <label class="block text-industrial-400 text-[11px] mb-1">CNPJ OU CIDADE</label>
+          <input type="text" id="cotDocCliente" placeholder="Ex: Serra / Vitória" class="w-full bg-industrial-800 border border-industrial-600 px-3 py-1.5 text-white focus:outline-none focus:border-white">
+        </div>
+        <div>
+          <label class="block text-industrial-400 text-[11px] mb-1">URGÊNCIA</label>
+          <select id="cotUrgencia" class="w-full bg-industrial-800 border border-industrial-600 px-2 py-1.5 text-white focus:outline-none focus:border-white text-xs">
+            <option value="Veículo parado no elevador (Urgente)">Veículo Parado (Urgente)</option>
+            <option value="Cotação de rotina">Cotação de Rotina</option>
+            <option value="Reposição de estoque">Reposição de Estoque</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pt-2">
+        <button onclick="enviarCotacaoWhatsApp()" class="w-full py-2.5 bg-white text-industrial-900 font-bold uppercase text-xs hover:bg-industrial-200 transition flex items-center justify-center gap-2">
+          <span>📲</span> Enviar Cotação Formatada ao Balcão
+        </button>
+        <p class="text-[10px] text-industrial-400 text-center mt-1.5">
+          Os códigos OEM, marcas e quantidades serão transmitidos estruturados para o vendedor.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOAST NOTIFICAÇÃO -->
+  <div id="toast" class="fixed bottom-5 right-5 bg-white text-industrial-900 border border-industrial-400 px-4 py-2.5 font-mono text-xs font-bold shadow-xl z-50 transform translate-y-20 opacity-0 transition-all duration-300">
+    <span id="toastMsg">Mensagem</span>
+  </div>
+
+  <!-- JAVASCRIPT DO SISTEMA B2B -->
+  <script>
+    // BASE DE DADOS INICIAL REALISTA DO POLO CIVIT (LINHA PESADA E DISTRIBUIÇÃO B2B)
+    const PECAS_PADRAO = [
+      {
+        id: "peca-001",
+        oem: "0044206020",
+        sku: "ALB-7821",
+        nome: "Jogo de Pastilhas de Freio a Disco Dianteiro",
+        marca: "Fras-le / Knorr-Bremse",
+        categoria: "Freios & Suspensão",
+        aplicacao: "Mercedes-Benz Actros 2651 / Axor 2544 (2018-2024)",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 01 - Rua B - Prateleira 08",
+        imagem: "",
+        obs: "Acompanha kit de molas, pinos e travas de retenção. Homologação OEM.",
+        icone: "disco-freio"
+      },
+      {
+        id: "peca-002",
+        oem: "4045753",
+        sku: "ALB-9410",
+        nome: "Turbocompressor Completo HX40W Linha Pesada",
+        marca: "Holset / Cummins",
+        categoria: "Motor & Injeção",
+        aplicacao: "Ford Cargo 2842 / Scania R440 / Cummins ISM 11",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 02 - Rua A - Prateleira 03",
+        imagem: "",
+        obs: "Turbina balanceada de fábrica com carcaça de turbina em ferro nodular.",
+        icone: "turbina"
+      },
+      {
+        id: "peca-003",
+        oem: "3400700344",
+        sku: "ALB-5532",
+        nome: "Kit Platô e Disco de Embreagem 430mm com Rolamento",
+        marca: "Sachs / Eaton",
+        categoria: "Transmissão & Câmbio",
+        aplicacao: "Volvo FH 460 / FH 540 Globetrotter (Câmbio I-Shift)",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 01 - Rua E - Prateleira 12",
+        imagem: "",
+        obs: "Revestimento Heavy Duty para composições bitrem e rodotrem.",
+        icone: "embreagem"
+      },
+      {
+        id: "peca-004",
+        oem: "22330-EK",
+        sku: "NOR-1049",
+        nome: "Rolamento Autocompensador de Rolos com Furo Cônico",
+        marca: "SKF Industrial",
+        categoria: "Rolamentos & Vedação",
+        aplicacao: "Equipamentos de Britagem, Peneiras Vibratórias e Eixos Industriais",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 03 - Rua C - Gaveteiro 45",
+        imagem: "",
+        obs: "Folga radial C3, gaiola usinada em latão. Suporta cargas radiais severas.",
+        icone: "rolamento"
+      },
+      {
+        id: "peca-005",
+        oem: "8MK376721",
+        sku: "HIT-3081",
+        nome: "Radiador de Água Completo em Alumínio Brasado",
+        marca: "Mahle Behr",
+        categoria: "Arrefecimento & Térmico",
+        aplicacao: "Scania Série 4 / Série G420 / R440 Euro 5",
+        estoque: "Em Trânsito (24 Horas)",
+        localizacao: "Galpão 02 - Bloco D - Palete 19",
+        imagem: "",
+        obs: "Colmeia reforçada contra vibração e ataques de agentes químicos.",
+        icone: "radiador"
+      },
+      {
+        id: "peca-006",
+        oem: "504082370",
+        sku: "ALB-3319",
+        nome: "Válvula Reguladora de Pressão Common Rail",
+        marca: "Bosch Rexroth",
+        categoria: "Motor & Injeção",
+        aplicacao: "Iveco Stralis 380 / Tector 240E25",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 01 - Armário Segurança 02",
+        imagem: "",
+        obs: "Original Bosch em embalagem lacrada de teste de bancada.",
+        icone: "valvula"
+      },
+      {
+        id: "peca-007",
+        oem: "5-280X",
+        sku: "ALB-8022",
+        nome: "Cruzeta da Árvore de Transmissão (Cardan)",
+        marca: "Spicer / Dana",
+        categoria: "Transmissão & Câmbio",
+        aplicacao: "Mercedes-Benz 1620 / Atego 2425 / Volkswagen Constellation",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 01 - Rua C - Prateleira 06",
+        imagem: "",
+        obs: "Com bico de engraxe angular para lubrificação facilitada na rampa.",
+        icone: "cruzeta"
+      },
+      {
+        id: "peca-008",
+        oem: "2R0127177J",
+        sku: "ALB-1140",
+        nome: "Elemento Filtro Separador de Água do Combustível",
+        marca: "Parker Racor",
+        categoria: "Motor & Injeção",
+        aplicacao: "Linha Pesada VW Constellation 19.320 / 25.370",
+        estoque: "Pronta Entrega (Civit I/II)",
+        localizacao: "Galpão 02 - Rua B - Prateleira 22",
+        imagem: "",
+        obs: "Tecnologia Aquabloc 10 mícrons com dreno de purga.",
+        icone: "filtro"
+      }
+    ];
+
+    // ESTADO DA APLICAÇÃO
+    let bancoPecas = [];
+    let listaCotacao = [];
+    let tempFotoBase64 = "";
+
+    // INICIALIZAÇÃO
+    window.addEventListener('DOMContentLoaded', () => {
+      carregarBanco();
+      renderizarCatalogo();
+      atualizarBadgeCotacao();
+    });
+
+    // GERENCIAMENTO DE DADOS LOCALSTORAGE
+    function carregarBanco() {
+      const salvo = localStorage.getItem('prisma_b2b_pecas_db');
+      if (salvo) {
+        try {
+          bancoPecas = JSON.parse(salvo);
+        } catch (e) {
+          bancoPecas = [...PECAS_PADRAO];
+        }
+      } else {
+        bancoPecas = [...PECAS_PADRAO];
+        salvarBanco();
+      }
+    }
+
+    function salvarBanco() {
+      localStorage.setItem('prisma_b2b_pecas_db', JSON.stringify(bancoPecas));
+    }
+
+    // GERADOR DE DIAGRAMAS TÉCNICOS SVG (MINIMALISTA / ENGENHARIA)
+    function gerarSvgTecnico(icone) {
+      const stroke = "#717b8f";
+      const fill = "rgba(113, 123, 143, 0.08)";
+      
+      switch (icone) {
+        case 'turbina':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <circle cx="50" cy="50" r="38" stroke-dasharray="4 2" />
+              <circle cx="50" cy="50" r="24" fill="${fill}" />
+              <circle cx="50" cy="50" r="8" fill="${stroke}" />
+              <path d="M50 26 C42 35 42 45 50 50 C58 55 58 65 50 74" />
+              <path d="M26 50 C35 58 45 58 50 50 C55 42 65 42 74 50" />
+              <line x1="88" y1="50" x2="100" y2="50" stroke-width="3" />
+              <rect x="74" y="38" width="16" height="24" fill="${fill}" />
+            </svg>
+          `;
+        case 'disco-freio':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <circle cx="50" cy="50" r="42" fill="${fill}" />
+              <circle cx="50" cy="50" r="28" stroke-dasharray="3 3" />
+              <circle cx="50" cy="50" r="14" />
+              <circle cx="50" cy="38" r="3" fill="${stroke}" />
+              <circle cx="62" cy="50" r="3" fill="${stroke}" />
+              <circle cx="50" cy="62" r="3" fill="${stroke}" />
+              <circle cx="38" cy="50" r="3" fill="${stroke}" />
+              <rect x="10" y="20" width="22" height="36" rx="2" fill="${stroke}" fill-opacity="0.2" stroke-width="2" />
+            </svg>
+          `;
+        case 'embreagem':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <circle cx="50" cy="50" r="42" stroke-dasharray="6 3" />
+              <circle cx="50" cy="50" r="30" fill="${fill}" />
+              <circle cx="50" cy="50" r="12" />
+              <rect x="36" y="24" width="8" height="12" fill="${stroke}" />
+              <rect x="56" y="24" width="8" height="12" fill="${stroke}" />
+              <rect x="36" y="64" width="8" height="12" fill="${stroke}" />
+              <rect x="56" y="64" width="8" height="12" fill="${stroke}" />
+            </svg>
+          `;
+        case 'rolamento':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <circle cx="50" cy="50" r="42" />
+              <circle cx="50" cy="50" r="24" fill="${fill}" />
+              <circle cx="50" cy="18" r="6" fill="${stroke}" />
+              <circle cx="73" cy="27" r="6" fill="${stroke}" />
+              <circle cx="82" cy="50" r="6" fill="${stroke}" />
+              <circle cx="73" cy="73" r="6" fill="${stroke}" />
+              <circle cx="50" cy="82" r="6" fill="${stroke}" />
+              <circle cx="27" cy="73" r="6" fill="${stroke}" />
+              <circle cx="18" cy="50" r="6" fill="${stroke}" />
+              <circle cx="27" cy="27" r="6" fill="${stroke}" />
+            </svg>
+          `;
+        case 'radiador':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <rect x="15" y="20" width="70" height="60" rx="3" fill="${fill}" />
+              <line x1="25" y1="20" x2="25" y2="80" stroke-dasharray="2 2" />
+              <line x1="35" y1="20" x2="35" y2="80" stroke-dasharray="2 2" />
+              <line x1="45" y1="20" x2="45" y2="80" stroke-dasharray="2 2" />
+              <line x1="55" y1="20" x2="55" y2="80" stroke-dasharray="2 2" />
+              <line x1="65" y1="20" x2="65" y2="80" stroke-dasharray="2 2" />
+              <line x1="75" y1="20" x2="75" y2="80" stroke-dasharray="2 2" />
+              <rect x="35" y="10" width="30" height="10" fill="${stroke}" fill-opacity="0.3" />
+              <rect x="35" y="80" width="30" height="10" fill="${stroke}" fill-opacity="0.3" />
+            </svg>
+          `;
+        case 'cruzeta':
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <rect x="42" y="10" width="16" height="80" rx="3" fill="${fill}" />
+              <rect x="10" y="42" width="80" height="16" rx="3" fill="${fill}" />
+              <circle cx="50" cy="50" r="6" fill="${stroke}" />
+              <rect x="40" y="10" width="20" height="8" fill="${stroke}" />
+              <rect x="40" y="82" width="20" height="8" fill="${stroke}" />
+              <rect x="10" y="40" width="8" height="20" fill="${stroke}" />
+              <rect x="82" y="40" width="8" height="20" fill="${stroke}" />
+            </svg>
+          `;
+        default:
+          return `
+            <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="${stroke}" stroke-width="2">
+              <polygon points="50,15 85,35 85,75 50,95 15,75 15,35" fill="${fill}" />
+              <line x1="50" y1="15" x2="50" y2="95" />
+              <line x1="15" y1="35" x2="50" y2="55" />
+              <line x1="85" y1="35" x2="50" y2="55" />
+              <circle cx="50" cy="55" r="5" fill="${stroke}" />
+            </svg>
+          `;
+      }
+    }
+
+    // RENDERIZAÇÃO DO CATÁLOGO
+    function renderizarCatalogo(lista = null) {
+      const grid = document.getElementById('gridPecas');
+      const emptyState = document.getElementById('emptyState');
+      const itens = lista || bancoPecas;
+
+      document.getElementById('totalCount').innerText = bancoPecas.length;
+      document.getElementById('filteredCount').innerText = itens.length;
+
+      if (itens.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+      grid.innerHTML = itens.map(item => {
+        const isInCart = listaCotacao.some(c => c.id === item.id);
+        const imageContent = item.imagem 
+          ? `<img src="${item.imagem}" alt="${item.nome}" class="w-full h-36 object-contain p-2">`
+          : `<div class="w-full h-36 flex items-center justify-center p-2">${gerarSvgTecnico(item.icone)}</div>`;
+
+        return `
+          <div class="border border-industrial-700 bg-industrial-850 hover:border-industrial-500 transition flex flex-col justify-between group">
+            
+            <!-- Imagem e Códigos -->
+            <div>
+              <div class="bg-industrial-900 border-b border-industrial-700/80 relative">
+                <div class="absolute top-2 left-2 flex flex-col gap-1 z-10">
+                  <span class="font-mono text-[10px] px-2 py-0.5 border border-industrial-600 bg-industrial-800 text-industrial-300 font-bold uppercase">
+                    OEM: ${item.oem}
+                  </span>
+                </div>
+                <div class="absolute top-2 right-2 z-10">
+                  <span class="font-mono text-[10px] px-2 py-0.5 border ${item.estoque.includes('Pronta') ? 'border-industrial-600 text-emerald-400 bg-industrial-800' : 'border-industrial-700 text-amber-300 bg-industrial-800'}">
+                    ${item.estoque.includes('Pronta') ? '● CIVIT PRONTA ENTREGA' : '○ 24H SOB ENCOMENDA'}
+                  </span>
+                </div>
+                ${imageContent}
+              </div>
+
+              <!-- Descrição Técnica -->
+              <div class="p-4">
+                <div class="flex items-center justify-between text-xs font-mono text-industrial-400 mb-1">
+                  <span>${item.marca}</span>
+                  <span class="text-industrial-500">SKU: ${item.sku}</span>
+                </div>
+
+                <h3 class="font-bold text-sm text-white uppercase tracking-tight line-clamp-2 mb-2 group-hover:text-industrial-200">
+                  ${item.nome}
+                </h3>
+
+                <!-- Compatibilidade de Veículos -->
+                <div class="border-t border-industrial-700/60 pt-2 mb-3">
+                  <span class="block text-[11px] font-mono text-industrial-400 uppercase">Aplicação:</span>
+                  <p class="text-xs text-industrial-200 line-clamp-1 font-mono">${item.aplicacao}</p>
+                </div>
+
+                <!-- Tag de Categoria -->
+                <div class="inline-block">
+                  <span class="text-[10px] font-mono uppercase px-2 py-0.5 border border-industrial-700 text-industrial-300 bg-industrial-800">
+                    ${item.categoria}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botões de Ação (SEM PREÇOS) -->
+            <div class="p-4 pt-0 grid grid-cols-2 gap-2 font-mono text-xs">
+              <button onclick="abrirFichaTecnica('${item.id}')" class="py-2 border border-industrial-700 text-industrial-300 hover:text-white hover:border-industrial-500 transition text-center uppercase">
+                Ver Ficha
+              </button>
+              <button onclick="adicionarCotacao('${item.id}')" class="py-2 ${isInCart ? 'bg-industrial-700 text-industrial-300 border border-industrial-600' : 'bg-white text-industrial-900 font-bold hover:bg-industrial-200'} transition text-center uppercase">
+                ${isInCart ? '✓ Na Lista' : '+ Cotar'}
+              </button>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // FILTRAGEM DINÂMICA
+    function filtrarPecas() {
+      const query = document.getElementById('inputSearch').value.toLowerCase().trim();
+      const cat = document.getElementById('selectCategory').value;
+      const stock = document.getElementById('selectStock').value;
+
+      const filtrados = bancoPecas.filter(p => {
+        const matchesQuery = !query || 
+          p.oem.toLowerCase().includes(query) || 
+          p.sku.toLowerCase().includes(query) || 
+          p.nome.toLowerCase().includes(query) || 
+          p.aplicacao.toLowerCase().includes(query) || 
+          p.marca.toLowerCase().includes(query);
+
+        const matchesCat = !cat || p.categoria === cat;
+        const matchesStock = !stock || p.estoque === stock;
+
+        return matchesQuery && matchesCat && matchesStock;
+      });
+
+      renderizarCatalogo(filtrados);
+    }
+
+    function resetarFiltros() {
+      document.getElementById('inputSearch').value = '';
+      document.getElementById('selectCategory').value = '';
+      document.getElementById('selectStock').value = '';
+      renderizarCatalogo();
+    }
+
+    // CONTROLE DE FICHA TÉCNICA
+    function abrirFichaTecnica(id) {
+      const p = bancoPecas.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('fichaNome').innerText = p.nome;
+      document.getElementById('fichaMarca').innerText = `Fabricante: ${p.marca}`;
+      document.getElementById('fichaCategoryBadge').innerText = p.categoria;
+      document.getElementById('fichaStockBadge').innerText = p.estoque;
+      document.getElementById('fichaOEM').innerText = p.oem;
+      document.getElementById('fichaSKU').innerText = p.sku;
+      document.getElementById('fichaAplicacao').innerText = p.aplicacao;
+      document.getElementById('fichaLocalizacao').innerText = p.localizacao || "Galpão CIVIT II - Setor B2B";
+      document.getElementById('fichaObs').innerText = p.obs || "Conforme especificações e tolerâncias do fabricante.";
+
+      const imgContainer = document.getElementById('fichaImagemContainer');
+      if (p.imagem) {
+        imgContainer.innerHTML = `<img src="${p.imagem}" class="max-h-48 object-contain">`;
+      } else {
+        imgContainer.innerHTML = gerarSvgTecnico(p.icone);
+      }
+
+      const btn = document.getElementById('btnFichaAdicionar');
+      btn.onclick = () => {
+        adicionarCotacao(p.id);
+        closeModalFicha();
+      };
+
+      document.getElementById('modalFicha').classList.remove('hidden');
+    }
+
+    function closeModalFicha() {
+      document.getElementById('modalFicha').classList.add('hidden');
+    }
+
+    // SISTEMA DE CADASTRO DE PEÇAS
+    function openModalCadastro() {
+      tempFotoBase64 = "";
+      document.getElementById('formCadastroPeca').reset();
+      document.getElementById('cadPreviewStatus').innerText = "Se não enviar imagem, será gerado automaticamente um diagrama técnico de engenharia.";
+      document.getElementById('modalCadastro').classList.remove('hidden');
+    }
+
+    function closeModalCadastro() {
+      document.getElementById('modalCadastro').classList.add('hidden');
+    }
+
+    function carregarFotoBase64(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        tempFotoBase64 = e.target.result;
+        document.getElementById('cadPreviewStatus').innerText = `✓ Foto carregada: ${file.name} (${(file.size / 1024).toFixed(0)} KB)`;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function salvarNovaPeca(event) {
+      event.preventDefault();
+
+      const oem = document.getElementById('cadOEM').value.trim();
+      const sku = document.getElementById('cadSKU').value.trim();
+      const nome = document.getElementById('cadNome').value.trim();
+      const marca = document.getElementById('cadMarca').value.trim();
+      const categoria = document.getElementById('cadCategoria').value;
+      const aplicacao = document.getElementById('cadAplicacao').value.trim();
+      const estoque = document.getElementById('cadEstoque').value;
+      const localizacao = document.getElementById('cadLocalizacao').value.trim() || "Galpão CIVIT - Balcão B2B";
+      const obs = document.getElementById('cadObs').value.trim();
+      const urlFoto = document.getElementById('cadImagemURL').value.trim();
+
+      const novaPeca = {
+        id: "peca-" + Date.now(),
+        oem,
+        sku,
+        nome,
+        marca,
+        categoria,
+        aplicacao,
+        estoque,
+        localizacao,
+        imagem: tempFotoBase64 || urlFoto || "",
+        obs: obs || "Item registrado no sistema B2B sem exibição de preço.",
+        icone: "generico"
+      };
+
+      bancoPecas.unshift(novaPeca);
+      salvarBanco();
+      renderizarCatalogo();
+      closeModalCadastro();
+      showToast(`Peça "${oem}" cadastrada com sucesso!`);
+    }
+
+    // LISTA DE COTAÇÃO B2B (SEM PREÇO)
+    function openDrawerCotacao() {
+      renderizarItensCotacao();
+      document.getElementById('drawerCotacao').classList.remove('translate-x-full');
+    }
+
+    function closeDrawerCotacao() {
+      document.getElementById('drawerCotacao').classList.add('translate-x-full');
+    }
+
+    function toggleHowItWorks() {
+      const el = document.getElementById('howItWorksSection');
+      el.classList.toggle('hidden');
+    }
+
+    function adicionarCotacao(id) {
+      const peca = bancoPecas.find(p => p.id === id);
+      if (!peca) return;
+
+      const jaExiste = listaCotacao.find(c => c.id === id);
+      if (jaExiste) {
+        jaExiste.qtd += 1;
+      } else {
+        listaCotacao.push({
+          id: peca.id,
+          oem: peca.oem,
+          sku: peca.sku,
+          nome: peca.nome,
+          marca: peca.marca,
+          estoque: peca.estoque,
+          qtd: 1
+        });
+      }
+
+      atualizarBadgeCotacao();
+      renderizarCatalogo();
+      showToast(`Item ${peca.oem} adicionado à cotação`);
+    }
+
+    function alterarQtdCotacao(id, delta) {
+      const item = listaCotacao.find(c => c.id === id);
+      if (!item) return;
+
+      item.qtd += delta;
+      if (item.qtd <= 0) {
+        listaCotacao = listaCotacao.filter(c => c.id !== id);
+      }
+
+      atualizarBadgeCotacao();
+      renderizarItensCotacao();
+      renderizarCatalogo();
+    }
+
+    function removerItemCotacao(id) {
+      listaCotacao = listaCotacao.filter(c => c.id !== id);
+      atualizarBadgeCotacao();
+      renderizarItensCotacao();
+      renderizarCatalogo();
+    }
+
+    function atualizarBadgeCotacao() {
+      const totalQtd = listaCotacao.reduce((acc, curr) => acc + curr.qtd, 0);
+      document.getElementById('badgeCotacaoCount').innerText = totalQtd;
+    }
+
+    function renderizarItensCotacao() {
+      const container = document.getElementById('cotacaoItensContainer');
+      
+      if (listaCotacao.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-industrial-400 font-mono text-xs">
+            <div class="text-2xl mb-2 text-industrial-500">∅</div>
+            Sua lista de cotação está vazia.<br>
+            Navegue pelo catálogo e adicione os códigos necessários.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = listaCotacao.map(item => `
+        <div class="border border-industrial-700 bg-industrial-900 p-3 font-mono text-xs">
+          <div class="flex items-start justify-between gap-2 mb-1.5">
+            <div>
+              <span class="text-[10px] text-industrial-400 uppercase">OEM: ${item.oem} | SKU: ${item.sku}</span>
+              <h4 class="font-bold text-white text-xs uppercase line-clamp-1">${item.nome}</h4>
+              <p class="text-[11px] text-industrial-400">${item.marca}</p>
+            </div>
+            <button onclick="removerItemCotacao('${item.id}')" class="text-industrial-500 hover:text-white text-xs">✕</button>
+          </div>
+
+          <div class="flex items-center justify-between border-t border-industrial-800 pt-2 mt-2">
+            <span class="text-[10px] text-industrial-400">Quantidade Solicitada:</span>
+            <div class="flex items-center border border-industrial-700 bg-industrial-800">
+              <button onclick="alterarQtdCotacao('${item.id}', -1)" class="px-2 py-0.5 text-industrial-300 hover:text-white">-</button>
+              <span class="px-2.5 py-0.5 text-white font-bold">${item.qtd}</span>
+              <button onclick="alterarQtdCotacao('${item.id}', 1)" class="px-2 py-0.5 text-industrial-300 hover:text-white">+</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // DISPARO DE COTAÇÃO FORMATADA PARA O WHATSAPP DO BALCÃO
+    function enviarCotacaoWhatsApp() {
+      if (listaCotacao.length === 0) {
+        alert("Adicione pelo menos uma peça à lista de cotação antes de enviar.");
+        return;
+      }
+
+      const cliente = document.getElementById('cotNomeCliente').value.trim() || "Oficina / Cliente Balcão";
+      const doc = document.getElementById('cotDocCliente').value.trim() || "Serra/ES";
+      const urgencia = document.getElementById('cotUrgencia').value;
+
+      let msg = `*SOLICITAÇÃO DE COTAÇÃO B2B — POLO CIVIT*\n`;
+      msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `🏢 *Cliente/Oficina:* ${cliente}\n`;
+      msg += `📍 *Região/CNPJ:* ${doc}\n`;
+      msg += `⏱️ *Prioridade:* ${urgencia}\n`;
+      msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `*ITENS SOLICITADOS (CÓDIGOS TÉCNICOS):*\n\n`;
+
+      listaCotacao.forEach((item, index) => {
+        msg += `${index + 1}. *OEM:* ${item.oem}\n`;
+        msg += `   • *Peça:* ${item.nome}\n`;
+        msg += `   • *Marca:* ${item.marca} (SKU: ${item.sku})\n`;
+        msg += `   • *Quantidade:* ${item.qtd} un\n`;
+        msg += `   • *Status no Galpão:* ${item.estoque}\n\n`;
+      });
+
+      msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+      msg += `Favor confirmar disponibilidade imediata e prazo de entrega no balcão.`;
+
+      // Número exemplo do televendas balcão CIVIT (pode ser configurado para o cliente)
+      const encoded = encodeURIComponent(msg);
+      window.open(`https://api.whatsapp.com/send?text=${encoded}`, '_blank');
+    }
+
+    // EXPORTAR BANCO DE DADOS EM JSON
+    function exportarBancoJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(bancoPecas, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `catalogo_pecas_civit_${Date.now()}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast("Backup do catálogo exportado com sucesso!");
+    }
+
+    // SISTEMA DE NOTIFICAÇÃO TOAST
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
