@@ -119,15 +119,10 @@
           <img id="imgPrincipal" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85" alt="Sala de Estar de Luxo" class="w-full h-[360px] sm:h-[480px] lg:h-[540px] object-cover group-hover:scale-105 transition-all duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-90 group-hover:opacity-75 transition"></div>
           
-          <!-- Botões Flutuantes: Maquete 3D Dollhouse & Visita Virtual 360° -->
-          <div class="absolute top-4 right-4 z-20 flex flex-wrap items-center justify-end gap-2">
-            <a href="planta_3d_dollhouse.html" onclick="event.stopPropagation()" class="px-4 py-2.5 rounded-full bg-cyan-500/90 hover:bg-cyan-400 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider transition shadow-2xl shadow-cyan-500/40 hover:scale-105 flex items-center gap-2 border border-white/40">
-              <span class="text-base">📐</span> Maquete 3D Dollhouse
-            </a>
-            <a href="visita_virtual.html" onclick="event.stopPropagation()" class="px-4 py-2.5 rounded-full bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold font-mono text-xs uppercase tracking-wider transition shadow-2xl shadow-amber-500/50 hover:scale-105 flex items-center gap-2 border border-white/40">
-              <span class="text-base animate-spin" style="animation-duration: 4s;">🔄</span> Visita Virtual 360°
-            </a>
-          </div>
+          <!-- Botão Flutuante de Visita Virtual 360° -->
+          <a href="visita_virtual.html" onclick="event.stopPropagation()" class="absolute top-4 right-4 z-20 px-4 py-2.5 rounded-full bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold font-mono text-xs uppercase tracking-wider transition shadow-2xl shadow-amber-500/50 hover:scale-105 flex items-center gap-2 border border-white/40">
+            <span class="text-base animate-spin" style="animation-duration: 4s;">🔄</span> Visita Virtual 360°
+          </a>
 
           <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between">
             <div>
@@ -179,14 +174,9 @@
             Caminhe e gire 360° por todos os cômodos (Living com pé-direito duplo, Varanda Gourmet, Suíte Master e Sala de Banho) com rotação livre e planta baixa interativa.
           </p>
         </div>
-        <div class="z-10 shrink-0 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <a href="planta_3d_dollhouse.html" class="px-6 py-4 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold uppercase font-mono text-xs tracking-wider transition shadow-xl shadow-cyan-500/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-            <span class="text-lg">📐</span> MAQUETE 3D DOLLHOUSE
-          </a>
-          <a href="visita_virtual.html" class="px-6 py-4 rounded-xl bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold uppercase font-mono text-xs tracking-wider transition shadow-xl shadow-amber-500/40 hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-            <span class="text-lg">🔄</span> VISITA VIRTUAL 360°
-          </a>
-        </div>
+        <a href="visita_virtual.html" class="z-10 shrink-0 px-8 py-4 rounded-xl bg-luxe-gold hover:bg-luxe-goldLight text-luxe-950 font-bold uppercase font-mono text-xs tracking-wider transition shadow-xl shadow-amber-500/40 hover:scale-105 active:scale-95 flex items-center gap-2.5">
+          <span class="text-lg">🔄</span> INICIAR VISITA VIRTUAL 360°
+        </a>
       </div>
 
       <!-- BARRA DE ESPECIFICAÇÕES LIMPAS (4 PILARES) -->
