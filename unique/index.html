@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grupo Unique • Unique Talentos & Vendara B2B</title>
+  <meta name="description" content="Ecossistema digital do Grupo Unique: Portal de Empregos com Matching por IA e Marketplace B2B com Inteligência Comercial (IRC e FCI).">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            unique: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            vendara: {
+              50: '#fdf4ff',
+              100: '#fae8ff',
+              500: '#c026d3',
+              600: '#a21caf',
+              700: '#86198f',
+              800: '#701a75',
+              900: '#4a044e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- ==================== TOPO COPORATIVO GLOBAL ==================== -->
+  <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo e Badges -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 font-extrabold text-white text-xl tracking-wider">
+            U
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-lg tracking-tight text-white">GRUPO UNIQUE</span>
+              <span class="bg-sky-500/20 text-sky-400 border border-sky-500/30 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Ambiente de Demonstração</span>
+            </div>
+            <p class="text-xs text-slate-400 hidden sm:block">Ecossistema Integrado • Unique Talentos & Vendara B2B</p>
+          </div>
+        </div>
+
+        <!-- Seletor Master de Plataforma -->
+        <div class="flex items-center bg-slate-800/90 p-1.5 rounded-xl border border-slate-700">
+          <button id="btn-tab-talentos" onclick="switchPlatform('talentos')" class="flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-sm bg-sky-600 text-white">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Unique Talentos</span>
+          </button>
+          <button id="btn-tab-vendara" onclick="switchPlatform('vendara')" class="flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white">
+            <i class="fa-solid fa-handshake"></i>
+            <span>Vendara B2B</span>
+          </button>
+        </div>
+
+        <!-- Perfil / Status -->
+        <div class="hidden md:flex items-center gap-3">
+          <div class="text-right">
+            <div class="text-xs font-semibold text-slate-200">Demonstração Interativa</div>
+            <div class="text-[10px] text-emerald-400 flex items-center gap-1 justify-end">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              API & IA Conectadas
+            </div>
+          </div>
+          <div class="w-9 h-9 rounded-full bg-slate-700 border border-slate-600 flex items-center justify-center text-slate-300 font-bold text-sm">
+            GU
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SEÇÃO 1: UNIQUE TALENTOS ==================== -->
+  <main id="platform-talentos" class="flex-1 transition-opacity duration-300">
+    
+    <!-- Hero / Subheader Talentos -->
+    <section class="bg-gradient-to-b from-slate-900 via-sky-950/40 to-slate-50 pt-8 pb-12 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-700 text-xs font-semibold mb-3">
+              <i class="fa-solid fa-brain text-sky-600"></i>
+              Busca Semântica & Matching Inteligente de Candidatos
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Portal de Empregos <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">Unique Talentos</span>
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl">
+              Conexão em tempo real entre empresas e profissionais. A IA analisa os perfis, calcula a aderência da vaga e reduz o tempo de contratação em até 70%.
+            </p>
+          </div>
+
+          <!-- Switcher de Perfil (Candidato vs Recrutador) -->
+          <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-1.5 self-start lg:self-center">
+            <span class="text-xs font-bold text-slate-500 uppercase px-3 tracking-wider">Modo de Teste:</span>
+            <button id="btn-perfil-candidato" onclick="switchTalentosRole('candidato')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-sky-600 text-white shadow-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-user"></i> Visão Candidato
+            </button>
+            <button id="btn-perfil-empresa" onclick="switchTalentosRole('empresa')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5">
+              <i class="fa-solid fa-building"></i> Painel Empresa / Recrutador
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra de Busca Rápida com IA -->
+        <div class="bg-white p-4 rounded-2xl shadow-lg border border-slate-200">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div class="md:col-span-5 relative">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+              <input type="text" id="talentos-search-input" onkeyup="filterTalentosJobs()" placeholder="Cargo, habilidade técnica ou palavra-chave..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 focus:bg-white transition-all">
+            </div>
+            
+            <div class="md:col-span-3">
+              <select id="talentos-modality-select" onchange="filterTalentosJobs()" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 text-slate-700">
+                <option value="">Todas as Modalidades</option>
+                <option value="Remoto">Remoto</option>
+                <option value="Híbrido">Híbrido</option>
+                <option value="Presencial">Presencial</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-2">
+              <select id="talentos-seniority-select" onchange="filterTalentosJobs()" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 bg-slate-50 text-slate-700">
+                <option value="">Nível / Senioridade</option>
+                <option value="Júnior">Júnior</option>
+                <option value="Pleno">Pleno</option>
+                <option value="Sênior">Sênior</option>
+                <option value="Especialista">Especialista / Lead</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-2">
+              <button onclick="simulateIaMatch()" class="w-full py-2.5 px-4 bg-gradient-to-r from-sky-600 to-indigo-600 text-white rounded-xl text-xs font-bold hover:shadow-md hover:from-sky-700 hover:to-indigo-700 transition-all flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Match por IA</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Tags Rápidas -->
+          <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100 flex-wrap text-xs text-slate-500">
+            <span class="font-semibold text-slate-600"><i class="fa-solid fa-filter text-sky-500"></i> Filtros rápidos:</span>
+            <button onclick="quickFilterTalentos('Python')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 hover:text-sky-700 transition">Python</button>
+            <button onclick="quickFilterTalentos('TypeScript')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 hover:text-sky-700 transition">TypeScript</button>
+            <button onclick="quickFilterTalentos('PostgreSQL')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 hover:text-sky-700 transition">PostgreSQL</button>
+            <button onclick="quickFilterTalentos('Inteligência Artificial')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-sky-50 hover:text-sky-700 transition">Inteligência Artificial</button>
+            <button onclick="resetTalentosFilters()" class="text-sky-600 font-bold ml-auto hover:underline">Limpar filtros</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Conteúdo Principal Talentos -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- SUB-VISÃO A: CANDIDATO -->
+      <div id="view-talentos-candidato">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Vagas Recomendadas em Tempo Real</h2>
+            <p class="text-xs text-slate-500">Ordenadas por compatibilidade de perfil e data de publicação</p>
+          </div>
+          <div class="text-xs font-semibold bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-lg border border-emerald-200">
+            <i class="fa-solid fa-bolt mr-1"></i> 8 Vagas Ativas no Sistema
+          </div>
+        </div>
+
+        <!-- Grid de Vagas -->
+        <div id="talentos-jobs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Gerado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- SUB-VISÃO B: EMPRESA / RECRUTADOR -->
+      <div id="view-talentos-empresa" class="hidden">
+        
+        <!-- KPIs da Empresa -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold text-slate-500 uppercase">Vagas Publicadas</span>
+              <i class="fa-solid fa-briefcase text-sky-500"></i>
+            </div>
+            <div class="text-2xl font-extrabold text-slate-900">12</div>
+            <div class="text-[11px] text-emerald-600 font-medium mt-1"><i class="fa-solid fa-arrow-up"></i> +3 esta semana</div>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold text-slate-500 uppercase">Candidatos Triados por IA</span>
+              <i class="fa-solid fa-users text-indigo-500"></i>
+            </div>
+            <div class="text-2xl font-extrabold text-slate-900">148</div>
+            <div class="text-[11px] text-sky-600 font-medium mt-1">94% de precisão de RAG</div>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold text-slate-500 uppercase">Aguardando Aprovação</span>
+              <i class="fa-solid fa-clock-rotate-left text-amber-500"></i>
+            </div>
+            <div class="text-2xl font-extrabold text-slate-900">7</div>
+            <div class="text-[11px] text-amber-600 font-medium mt-1">Human-in-the-Loop</div>
+          </div>
+
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-bold text-slate-500 uppercase">Plano Ativo</span>
+              <i class="fa-solid fa-crown text-purple-500"></i>
+            </div>
+            <div class="text-2xl font-extrabold text-slate-900">Enterprise</div>
+            <div class="text-[11px] text-purple-600 font-medium mt-1">Acesso irrestrito a APIs</div>
+          </div>
+        </div>
+
+        <!-- Painel de Candidatos Pré-Qualificados pela IA -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-8">
+          <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-bold text-base text-slate-900">Fila de Candidatos Triados pela IA (Matching Semântico)</h3>
+              <p class="text-xs text-slate-500">Candidatos analisados com base no perfil da vaga e nota de compatibilidade</p>
+            </div>
+            <button onclick="openNewJobModal()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 self-start">
+              <i class="fa-solid fa-plus"></i> Publicar Nova Vaga com IA
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-500 uppercase font-semibold border-b border-slate-100">
+                <tr>
+                  <th class="py-3.5 px-4">Candidato</th>
+                  <th class="py-3.5 px-4">Vaga Pretendida</th>
+                  <th class="py-3.5 px-4">Score de IA (Match)</th>
+                  <th class="py-3.5 px-4">Competências Detectadas</th>
+                  <th class="py-3.5 px-4 text-right">Ação Humana</th>
+                </tr>
+              </thead>
+              <tbody id="talentos-candidates-table" class="divide-y divide-slate-100">
+                <!-- Inserido dinamicamente via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ==================== SEÇÃO 2: VENDARA MARKETPLACE B2B ==================== -->
+  <main id="platform-vendara" class="flex-1 hidden transition-opacity duration-300">
+    
+    <!-- Hero / Subheader Vendara -->
+    <section class="bg-gradient-to-b from-slate-900 via-purple-950/40 to-slate-50 pt-8 pb-12 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-700 text-xs font-semibold mb-3">
+              <i class="fa-solid fa-chart-line text-purple-600"></i>
+              Motor de Negócios B2B com Indicadores IRC e FCI
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Marketplace B2B <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Vendara</span>
+            </h1>
+            <p class="text-slate-600 text-sm sm:text-base mt-2 max-w-2xl">
+              Conexão inteligente entre indústrias, fornecedores e compradores corporativos. Acompanhe o Índice de Interesse Real de Compra (IRC) e o Fluxo Comercial Inverso (FCI).
+            </p>
+          </div>
+
+          <!-- Switcher de Perfil B2B -->
+          <div class="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 flex items-center gap-1.5 self-start lg:self-center">
+            <span class="text-xs font-bold text-slate-500 uppercase px-3 tracking-wider">Perfil B2B:</span>
+            <button id="btn-perfil-comprador" onclick="switchVendaraRole('comprador')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-purple-600 text-white shadow-sm flex items-center gap-1.5">
+              <i class="fa-solid fa-cart-shopping"></i> Comprador B2B
+            </button>
+            <button id="btn-perfil-fornecedor" onclick="switchVendaraRole('fornecedor')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5">
+              <i class="fa-solid fa-industry"></i> Painel Fornecedor
+            </button>
+          </div>
+        </div>
+
+        <!-- Painel de Métricas Proprietárias (IRC & FCI) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          
+          <div class="bg-white p-4 rounded-2xl border border-purple-100 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-gauge-high"></i>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold text-slate-400 uppercase">Índice Médio IRC</div>
+              <div class="text-xl font-extrabold text-slate-900">88.4 / 100</div>
+              <div class="text-[10px] text-purple-600 font-medium">Interesse Real de Compra Verificado</div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-600 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-arrows-split-up-and-left"></i>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold text-slate-400 uppercase">Fluxo Comercial Inverso (FCI)</div>
+              <div class="text-xl font-extrabold text-slate-900">R$ 2.450.000</div>
+              <div class="text-[10px] text-pink-600 font-medium">Demandas ativas de compradores para match</div>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-handshake-angle"></i>
+            </div>
+            <div>
+              <div class="text-[11px] font-bold text-slate-400 uppercase">Conexões Realizadas</div>
+              <div class="text-xl font-extrabold text-slate-900">342 empresas</div>
+              <div class="text-[10px] text-emerald-600 font-medium">Tempo médio de resposta: 2.1 horas</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Barra de Busca Vendara -->
+        <div class="bg-white p-4 rounded-2xl shadow-lg border border-slate-200">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+            <div class="md:col-span-6 relative">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+              <input type="text" id="vendara-search-input" onkeyup="filterVendaraCatalog()" placeholder="Buscar insumos, máquinas, matéria-prima ou fornecedor..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 focus:bg-white transition-all">
+            </div>
+
+            <div class="md:col-span-3">
+              <select id="vendara-category-select" onchange="filterVendaraCatalog()" class="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 bg-slate-50 text-slate-700">
+                <option value="">Todas as Categorias</option>
+                <option value="Industrial">Indústria e Peças</option>
+                <option value="Matéria-Prima">Matéria-Prima</option>
+                <option value="Tecnologia">Tecnologia & Automação</option>
+                <option value="Serviços B2B">Serviços Corporativos</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-3">
+              <button onclick="openQuoteModal()" class="w-full py-2.5 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl text-xs font-bold hover:shadow-md hover:from-purple-700 hover:to-pink-700 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Publicar Demanda no FCI</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Catálogo Vendara B2B -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <div id="view-vendara-comprador">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-xl font-bold text-slate-900">Vitrine de Fornecedores Qualificados & Soluções B2B</h2>
+            <p class="text-xs text-slate-500">Fornecedores auditados com índice IRC verificado e capacidade produtiva ativa</p>
+          </div>
+          <div class="text-xs font-semibold bg-purple-50 text-purple-700 px-3 py-1.5 rounded-lg border border-purple-200">
+            <i class="fa-solid fa-shield-halved mr-1"></i> Fornecedores Homologados
+          </div>
+        </div>
+
+        <div id="vendara-catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Gerado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Sub-visão Fornecedor -->
+      <div id="view-vendara-fornecedor" class="hidden">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+              <h3 class="font-bold text-lg text-slate-900">Demandas do Fluxo Comercial Inverso (FCI)</h3>
+              <p class="text-xs text-slate-500">Compradores com alta intenção de compra procurando fornecedores com o seu perfil</p>
+            </div>
+            <span class="text-xs font-bold bg-pink-50 text-pink-700 px-3 py-1.5 rounded-xl border border-pink-200 flex items-center gap-1.5 self-start">
+              <i class="fa-solid fa-bolt"></i> 4 Oportunidades Quentes
+            </span>
+          </div>
+
+          <div class="space-y-4" id="vendara-fci-list">
+            <!-- Gerado via JS -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER CORPORATIVO ==================== -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div>
+        <span class="text-white font-bold">Ecossistema Digital Grupo Unique</span> • Demonstração Técnica & UX
+        <p class="text-slate-500 mt-0.5">Arquitetura Full Stack: Next.js + NestJS + PostgreSQL (pgvector) + AI Matching.</p>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>Desenvolvido por <b>Guilherme Dias</b></span>
+        <span>•</span>
+        <a href="https://prisma-hub-digital.vercel.app" target="_blank" class="text-sky-400 hover:underline">Prisma Hub Digital</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAIS INTERATIVOS ==================== -->
+
+  <!-- Modal Candidatura -->
+  <div id="modal-candidatura" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-lg text-slate-900" id="modal-job-title">Candidatar-se à Vaga</h3>
+        <button onclick="closeModal('modal-candidatura')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Seu Nome Completo:</label>
+          <input type="text" id="cand-nome" value="Carlos Eduardo Silva" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">E-mail Profissional:</label>
+          <input type="email" id="cand-email" value="carlos.silva@exemplo.com.br" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Currículo (Simulação de Análise por IA):</label>
+          <div class="border-2 border-dashed border-sky-200 rounded-xl p-4 text-center bg-sky-50/50">
+            <i class="fa-solid fa-file-pdf text-2xl text-sky-600 mb-1"></i>
+            <p class="font-bold text-slate-700">curriculo_carlos_silva_2026.pdf</p>
+            <p class="text-[10px] text-slate-500">IA detectou: 4 anos de experiência • 8 competências chave</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-5 flex gap-2">
+        <button onclick="submitApplication()" class="flex-1 py-2.5 bg-sky-600 text-white font-bold rounded-xl text-xs hover:bg-sky-700 transition">Confirmar Envio com IA</button>
+        <button onclick="closeModal('modal-candidatura')" class="px-4 py-2.5 bg-slate-100 text-slate-600 font-bold rounded-xl text-xs hover:bg-slate-200 transition">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Nova Vaga -->
+  <div id="modal-nova-vaga" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-lg text-slate-900">Publicar Vaga com Assistente de IA</h3>
+        <button onclick="closeModal('modal-nova-vaga')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Título do Cargo:</label>
+          <input type="text" id="vaga-titulo" placeholder="Ex: Desenvolvedor Full Stack Sênior" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Modalidade:</label>
+            <select id="vaga-modalidade" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+              <option value="Remoto">Remoto</option>
+              <option value="Híbrido">Híbrido</option>
+              <option value="Presencial">Presencial</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Faixa Salarial:</label>
+            <input type="text" id="vaga-salario" placeholder="Ex: R$ 12.000 - R$ 15.000" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Requisitos Chave (A IA irá gerar embeddings):</label>
+          <textarea id="vaga-requisitos" rows="3" placeholder="Ex: Domínio em React/Next.js, Node.js, PostgreSQL e arquitetura de microsserviços." class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-sky-500 outline-none"></textarea>
+        </div>
+      </div>
+      <div class="mt-5 flex gap-2">
+        <button onclick="createJobPost()" class="flex-1 py-2.5 bg-sky-600 text-white font-bold rounded-xl text-xs hover:bg-sky-700 transition">Publicar e Iniciar Triagem</button>
+        <button onclick="closeModal('modal-nova-vaga')" class="px-4 py-2.5 bg-slate-100 text-slate-600 font-bold rounded-xl text-xs hover:bg-slate-200 transition">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Cotação B2B (Vendara) -->
+  <div id="modal-cotacao" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="font-bold text-lg text-slate-900" id="modal-vendor-title">Solicitar Conexão Comercial B2B</h3>
+        <button onclick="closeModal('modal-cotacao')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Empresa Compradora:</label>
+          <input type="text" value="Indústria Metalúrgica Alvorada Ltda" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-purple-500 outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Volume Estimado / Demanda Mensal:</label>
+          <input type="text" placeholder="Ex: 50.000 unidades / mês ou R$ 120.000" class="w-full px-3 py-2 rounded-lg border border-slate-200 focus:ring-2 focus:ring-purple-500 outline-none">
+        </div>
+        <div class="p-3 bg-purple-50 rounded-xl border border-purple-200 text-purple-900">
+          <div class="font-bold mb-1 flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-check text-purple-600"></i> Validação IRC Automática
+          </div>
+          <p class="text-[10px] text-purple-700">Esta solicitação receberá um índice de interesse real (IRC) para assegurar atendimento prioritário pelo fornecedor.</p>
+        </div>
+      </div>
+      <div class="mt-5 flex gap-2">
+        <button onclick="submitVendorQuote()" class="flex-1 py-2.5 bg-purple-600 text-white font-bold rounded-xl text-xs hover:bg-purple-700 transition">Disparar Cotação no FCI</button>
+        <button onclick="closeModal('modal-cotacao')" class="px-4 py-2.5 bg-slate-100 text-slate-600 font-bold rounded-xl text-xs hover:bg-slate-200 transition">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-xs">
+      <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+      <span id="toast-msg">Operação realizada com sucesso!</span>
+    </div>
+  </div>
+
+  <!-- ==================== LOGICA JAVASCRIPT REATIVA ==================== -->
+  <script>
+    // Dados Iniciais - Unique Talentos
+    const INITIAL_JOBS = [
+      {
+        id: 1,
+        title: "Desenvolvedor Full Stack Sênior (Next.js & Node)",
+        company: "Grupo Unique Tech",
+        location: "São Paulo, SP (Híbrido)",
+        modality: "Híbrido",
+        seniority: "Sênior",
+        salary: "R$ 13.000 - R$ 16.000",
+        match: 97,
+        tags: ["Next.js", "TypeScript", "PostgreSQL", "APIs"],
+        description: "Buscamos profissional com sólida experiência em microsserviços, Next.js e integração de modelos de IA para novos produtos SaaS."
+      },
+      {
+        id: 2,
+        title: "Especialista em Inteligência Artificial & LLMs",
+        company: "Unique Analytics & AI",
+        location: "Remoto (Brasil)",
+        modality: "Remoto",
+        seniority: "Especialista",
+        salary: "R$ 15.000 - R$ 19.000",
+        match: 95,
+        tags: ["Python", "pgvector", "RAG", "Embeddings", "FastAPI"],
+        description: "Responsável por implementar busca semântica, agentes autônomos e pipelines de RAG na plataforma corporativa."
+      },
+      {
+        id: 3,
+        title: "Tech Lead / Arquiteto de Software SaaS",
+        company: "Vendara Conexões",
+        location: "Ribeirão Preto, SP (Presencial)",
+        modality: "Presencial",
+        seniority: "Especialista",
+        salary: "R$ 18.000 - R$ 22.000",
+        match: 92,
+        tags: ["Docker", "Node.js", "PostgreSQL", "Multi-tenant"],
+        description: "Liderança técnica na concepção e escala de arquitetura multi-tenant B2B com alta volumetria de transações."
+      },
+      {
+        id: 4,
+        title: "Desenvolvedor Back-End Python & Automações",
+        company: "Nexus B2B Solutions",
+        location: "Remoto (Brasil)",
+        modality: "Remoto",
+        seniority: "Pleno",
+        salary: "R$ 8.500 - R$ 11.000",
+        match: 89,
+        tags: ["Python", "FastAPI", "Webhooks", "SQL"],
+        description: "Criação de webhooks, robôs de integração de APIs e processamento assíncrono de dados corporativos."
+      },
+      {
+        id: 5,
+        title: "Engenheiro de Dados & Observabilidade",
+        company: "Unique Data Hub",
+        location: "Curitiba, PR (Híbrido)",
+        modality: "Híbrido",
+        seniority: "Pleno",
+        salary: "R$ 10.000 - R$ 13.000",
+        match: 84,
+        tags: ["PostgreSQL", "Grafana", "Prometheus", "Docker"],
+        description: "Estruturação de bancos relacionais com índices vetoriais, telemetria de microsserviços e auditoria de logs LGPD."
+      },
+      {
+        id: 6,
+        title: "UI/UX Designer com Foco em Plataformas SaaS",
+        company: "Unique Digital Studio",
+        location: "Remoto (Brasil)",
+        modality: "Remoto",
+        seniority: "Sênior",
+        salary: "R$ 9.000 - R$ 12.000",
+        match: 78,
+        tags: ["Figma", "Design System", "Mobile-first", "SaaS UX"],
+        description: "Criação de interfaces web responsivas, dashboards analíticos e jornadas fluidas para marketplaces e portais de vagas."
+      }
+    ];
+
+    // Candidatos Triados no Painel Recrutador
+    const INITIAL_CANDIDATES = [
+      { name: "Gabriel S. Martins", role: "Desenvolvedor Full Stack Sênior", score: 98, skills: "Next.js, Node, PostgreSQL, Python", status: "Excelente Aderência" },
+      { name: "Mariana R. Vasconcelos", role: "Especialista em Inteligência Artificial", score: 96, skills: "Python, pgvector, LangChain, RAG", status: "Pré-Aprovado IA" },
+      { name: "Lucas F. Pinheiro", role: "Arquiteto de Software", score: 91, skills: "Docker, Microsserviços, NestJS", status: "Entrevista Sugerida" },
+      { name: "Beatriz M. Costa", role: "Desenvolvedor Back-End", score: 87, skills: "Python, FastAPI, SQL, Webhooks", status: "Em Análise" }
+    ];
+
+    // Dados Iniciais - Vendara Marketplace B2B
+    const INITIAL_VENDORS = [
+      {
+        id: 1,
+        name: "Metalúrgica Forja Sul S/A",
+        category: "Industrial",
+        location: "Joinville, SC",
+        irc: 94,
+        moq: "500 unidades",
+        products: "Peças usinadas sob medida, eixos mecânicos e corte laser CNC",
+        fci_status: "Fornecedor Prioritário",
+        badge: "ISO 9001:2015"
+      },
+      {
+        id: 2,
+        name: "Polímeros & Resinas Brasil",
+        category: "Matéria-Prima",
+        location: "Campinas, SP",
+        irc: 91,
+        moq: "1 tonelada",
+        products: "Resinas termoplásticas de engenharia e polímeros industriais reciclados",
+        fci_status: "Capacidade Imediata",
+        badge: "ESG Certificado"
+      },
+      {
+        id: 3,
+        name: "AutomaTech Sensores & IOT",
+        category: "Tecnologia",
+        location: "São Carlos, SP",
+        irc: 88,
+        moq: "10 módulos",
+        products: "Sensores industriais inteligentes, telemetria em nuvem e automação PLC",
+        fci_status: "Inovação Tecnológica",
+        badge: "Tecnologia 4.0"
+      },
+      {
+        id: 4,
+        name: "EcoEmbalagens Kraft do Brasil",
+        category: "Industrial",
+        location: "Curitiba, PR",
+        irc: 86,
+        moq: "2.000 caixas",
+        products: "Embalagens industriais reforçadas, caixas paletizáveis e fitas de arqueação",
+        fci_status: "Alto Estoque",
+        badge: "FSC Sustentável"
+      },
+      {
+        id: 5,
+        name: "Engenharia Mecatrônica Prisma",
+        category: "Serviços B2B",
+        location: "Belo Horizonte, MG",
+        irc: 89,
+        moq: "Sob Demanda",
+        products: "Projetos de engenharia reversa, integração de esteiras e laudos NR-12",
+        fci_status: "Consultoria Técnica",
+        badge: "CREA Ativo"
+      },
+      {
+        id: 6,
+        name: "Distribuidora Química QuimStar",
+        category: "Matéria-Prima",
+        location: "Santos, SP",
+        irc: 83,
+        moq: "200 litros",
+        products: "Solventes ecológicos, desengraxantes pesados e aditivos industriais",
+        fci_status: "Pronta Entrega",
+        badge: "Química Verde"
+      }
+    ];
+
+    // Demandas no FCI (Fluxo Comercial Inverso)
+    const INITIAL_FCI = [
+      {
+        buyer: "Montadora de Implementos Agrícolas (RS)",
+        demand: "Demanda: 12.000 flanges cortadas em chapa de aço 1045",
+        budget: "Orçamento Estimado: R$ 180.000 / mês",
+        urgency: "Urgência Alta (Entrega em 20 dias)",
+        irc: 96
+      },
+      {
+        buyer: "Frigorífico e Indústria de Alimentos (SP)",
+        demand: "Demanda: Sistema de visão computacional para inspeção de embalagens",
+        budget: "Orçamento Estimado: R$ 95.000",
+        urgency: "Avaliação Técnica Imediata",
+        irc: 92
+      },
+      {
+        buyer: "Fábrica de Cosméticos (PR)",
+        demand: "Demanda: 100.000 frascos PET âmbar reciclável de 250ml",
+        budget: "Orçamento Estimado: R$ 140.000",
+        urgency: "Contrato Recorrente Anual",
+        irc: 89
+      }
+    ];
+
+    // Estados Locais
+    let jobs = [...INITIAL_JOBS];
+    let vendors = [...INITIAL_VENDORS];
+    let candidates = [...INITIAL_CANDIDATES];
+    let selectedJobForModal = null;
+    let selectedVendorForModal = null;
+
+    // Alternar Plataforma (Unique Talentos vs Vendara)
+    function switchPlatform(platform) {
+      const tabTalentos = document.getElementById('btn-tab-talentos');
+      const tabVendara = document.getElementById('btn-tab-vendara');
+      const viewTalentos = document.getElementById('platform-talentos');
+      const viewVendara = document.getElementById('platform-vendara');
+
+      if (platform === 'talentos') {
+        tabTalentos.className = "flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-sm bg-sky-600 text-white";
+        tabVendara.className = "flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white";
+        viewTalentos.classList.remove('hidden');
+        viewVendara.classList.add('hidden');
+        showToast("Plataforma ativa: Unique Talentos (Portal de Vagas & IA)");
+      } else {
+        tabVendara.className = "flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all shadow-sm bg-purple-600 text-white";
+        tabTalentos.className = "flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white";
+        viewVendara.classList.remove('hidden');
+        viewTalentos.classList.add('hidden');
+        showToast("Plataforma ativa: Vendara (Marketplace B2B • IRC & FCI)");
+      }
+    }
+
+    // Alternar Perfil Talentos
+    function switchTalentosRole(role) {
+      const btnCand = document.getElementById('btn-perfil-candidato');
+      const btnEmp = document.getElementById('btn-perfil-empresa');
+      const viewCand = document.getElementById('view-talentos-candidato');
+      const viewEmp = document.getElementById('view-talentos-empresa');
+
+      if (role === 'candidato') {
+        btnCand.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-sky-600 text-white shadow-sm flex items-center gap-1.5";
+        btnEmp.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5";
+        viewCand.classList.remove('hidden');
+        viewEmp.classList.add('hidden');
+        showToast("Alternado para Visão do Candidato");
+      } else {
+        btnEmp.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-sky-600 text-white shadow-sm flex items-center gap-1.5";
+        btnCand.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5";
+        viewEmp.classList.remove('hidden');
+        viewCand.classList.add('hidden');
+        showToast("Alternado para Painel da Empresa / Recrutador");
+      }
+    }
+
+    // Alternar Perfil Vendara
+    function switchVendaraRole(role) {
+      const btnComp = document.getElementById('btn-perfil-comprador');
+      const btnForn = document.getElementById('btn-perfil-fornecedor');
+      const viewComp = document.getElementById('view-vendara-comprador');
+      const viewForn = document.getElementById('view-vendara-fornecedor');
+
+      if (role === 'comprador') {
+        btnComp.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-purple-600 text-white shadow-sm flex items-center gap-1.5";
+        btnForn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5";
+        viewComp.classList.remove('hidden');
+        viewForn.classList.add('hidden');
+        showToast("Alternado para Visão Comprador B2B");
+      } else {
+        btnForn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-purple-600 text-white shadow-sm flex items-center gap-1.5";
+        btnComp.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all text-slate-600 hover:bg-slate-100 flex items-center gap-1.5";
+        viewForn.classList.remove('hidden');
+        viewComp.classList.add('hidden');
+        showToast("Alternado para Painel Fornecedor (Oportunidades FCI)");
+      }
+    }
+
+    // Renderizar Vagas
+    function renderJobs(list) {
+      const container = document.getElementById('talentos-jobs-grid');
+      container.innerHTML = '';
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-400">
+            <i class="fa-solid fa-briefcase text-4xl mb-3 text-slate-300"></i>
+            <p class="font-semibold text-slate-600">Nenhuma vaga encontrada com estes filtros.</p>
+            <button onclick="resetTalentosFilters()" class="text-xs text-sky-600 font-bold mt-2 hover:underline">Limpar filtros de busca</button>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(j => {
+        const matchColor = j.match >= 90 ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-sky-50 text-sky-700 border-sky-200';
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all p-5 flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div>
+                <span class="text-[11px] font-bold text-slate-400 uppercase">${j.company}</span>
+                <h3 class="font-bold text-slate-900 text-base leading-snug hover:text-sky-600 transition cursor-pointer">${j.title}</h3>
+              </div>
+              <div class="px-2.5 py-1 rounded-xl text-xs font-extrabold border ${matchColor} flex items-center gap-1 shrink-0" title="Score de Matching Semântico por IA">
+                <i class="fa-solid fa-brain text-[10px]"></i> ${j.match}%
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 text-xs text-slate-500 mb-3 flex-wrap">
+              <span><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${j.location}</span>
+              <span>•</span>
+              <span class="font-semibold text-slate-700">${j.salary}</span>
+            </div>
+
+            <p class="text-xs text-slate-600 line-clamp-2 mb-4 leading-relaxed">${j.description}</p>
+
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              ${j.tags.map(t => `<span class="bg-slate-100 text-slate-600 text-[10px] font-semibold px-2 py-0.5 rounded-md">${t}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-[11px] text-slate-400 font-medium"><i class="fa-solid fa-check text-emerald-500 mr-1"></i> Verificada</span>
+            <button onclick="openApplyModal('${j.title}')" class="px-4 py-2 bg-slate-900 hover:bg-sky-600 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+              <span>Candidatar-se</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Renderizar Tabela de Candidatos da Empresa
+    function renderCandidates() {
+      const table = document.getElementById('talentos-candidates-table');
+      table.innerHTML = '';
+      candidates.forEach(c => {
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-50 transition";
+        row.innerHTML = `
+          <td class="py-3.5 px-4 font-bold text-slate-900">${c.name}</td>
+          <td class="py-3.5 px-4 text-slate-600">${c.role}</td>
+          <td class="py-3.5 px-4">
+            <span class="inline-flex items-center gap-1 font-extrabold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+              <i class="fa-solid fa-brain text-[10px]"></i> ${c.score}% Match
+            </span>
+          </td>
+          <td class="py-3.5 px-4 text-slate-500">${c.skills}</td>
+          <td class="py-3.5 px-4 text-right">
+            <button onclick="approveCandidate('${c.name}')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold text-[11px] transition">
+              Aprovar
+            </button>
+          </td>
+        `;
+        table.appendChild(row);
+      });
+    }
+
+    // Renderizar Catálogo Vendara
+    function renderVendara(list) {
+      const container = document.getElementById('vendara-catalog-grid');
+      container.innerHTML = '';
+
+      list.forEach(v => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all p-5 flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2">
+              <div>
+                <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">${v.category}</span>
+                <h3 class="font-bold text-slate-900 text-base leading-snug">${v.name}</h3>
+              </div>
+              <div class="px-2.5 py-1 rounded-xl text-xs font-extrabold border bg-purple-50 text-purple-700 border-purple-200 shrink-0" title="Índice de Interesse Real de Compra">
+                IRC ${v.irc}/100
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 text-xs text-slate-500 mb-3">
+              <span><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i> ${v.location}</span>
+              <span>•</span>
+              <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded font-semibold text-[10px]">${v.badge}</span>
+            </div>
+
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">${v.products}</p>
+
+            <div class="text-[11px] font-semibold text-slate-500 mb-4 bg-slate-50 p-2 rounded-lg border border-slate-100">
+              <span class="text-slate-400">Pedido Mínimo (MOQ):</span> ${v.moq}
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-[11px] text-emerald-600 font-bold"><i class="fa-solid fa-bolt mr-1"></i> ${v.fci_status}</span>
+            <button onclick="openVendorModal('${v.name}')" class="px-3.5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1.5">
+              <span>Cotar B2B</span>
+              <i class="fa-solid fa-paper-plane text-[10px]"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Renderizar Lista FCI
+    function renderFCI() {
+      const container = document.getElementById('vendara-fci-list');
+      container.innerHTML = '';
+      INITIAL_FCI.forEach(f => {
+        const item = document.createElement('div');
+        item.className = "p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-purple-200 transition flex flex-col sm:flex-row sm:items-center justify-between gap-4";
+        item.innerHTML = `
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-bold text-slate-900 text-sm">${f.buyer}</span>
+              <span class="px-2 py-0.5 rounded bg-purple-100 text-purple-700 text-[10px] font-extrabold">IRC ${f.irc}/100</span>
+            </div>
+            <div class="font-semibold text-slate-700 text-xs mb-1">${f.demand}</div>
+            <div class="text-xs text-slate-500 flex items-center gap-3">
+              <span class="text-purple-700 font-bold">${f.budget}</span>
+              <span>•</span>
+              <span class="text-pink-600 font-medium">${f.urgency}</span>
+            </div>
+          </div>
+          <button onclick="respondFCI('${f.buyer}')" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs rounded-xl transition self-start sm:self-center shrink-0">
+            Atender Demanda
+          </button>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    // Filtros Talentos
+    function filterTalentosJobs() {
+      const q = document.getElementById('talentos-search-input').value.toLowerCase();
+      const modality = document.getElementById('talentos-modality-select').value;
+      const seniority = document.getElementById('talentos-seniority-select').value;
+
+      const filtered = jobs.filter(j => {
+        const matchQ = j.title.toLowerCase().includes(q) || j.tags.some(t => t.toLowerCase().includes(q)) || j.description.toLowerCase().includes(q);
+        const matchMod = !modality || j.modality === modality;
+        const matchSen = !seniority || j.seniority === seniority;
+        return matchQ && matchMod && matchSen;
+      });
+
+      renderJobs(filtered);
+    }
+
+    function quickFilterTalentos(tech) {
+      document.getElementById('talentos-search-input').value = tech;
+      filterTalentosJobs();
+    }
+
+    function resetTalentosFilters() {
+      document.getElementById('talentos-search-input').value = '';
+      document.getElementById('talentos-modality-select').value = '';
+      document.getElementById('talentos-seniority-select').value = '';
+      renderJobs(jobs);
+    }
+
+    function simulateIaMatch() {
+      showToast("IA executando busca vetorial com embeddings de perfil...");
+      setTimeout(() => {
+        const sorted = [...jobs].sort((a, b) => b.match - a.match);
+        renderJobs(sorted);
+        showToast("Vagas reordenadas com 97% de compatibilidade semântica!");
+      }, 600);
+    }
+
+    // Filtros Vendara
+    function filterVendaraCatalog() {
+      const q = document.getElementById('vendara-search-input').value.toLowerCase();
+      const cat = document.getElementById('vendara-category-select').value;
+
+      const filtered = vendors.filter(v => {
+        const matchQ = v.name.toLowerCase().includes(q) || v.products.toLowerCase().includes(q) || v.category.toLowerCase().includes(q);
+        const matchCat = !cat || v.category === cat;
+        return matchQ && matchCat;
+      });
+
+      renderVendara(filtered);
+    }
+
+    // Modais e Ações
+    function openApplyModal(title) {
+      selectedJobForModal = title;
+      document.getElementById('modal-job-title').innerText = `Candidatura: ${title}`;
+      document.getElementById('modal-candidatura').classList.remove('hidden');
+    }
+
+    function submitApplication() {
+      closeModal('modal-candidatura');
+      showToast(`Candidatura enviada para "${selectedJobForModal}"! A IA calculou 96% de aderência.`);
+    }
+
+    function openNewJobModal() {
+      document.getElementById('modal-nova-vaga').classList.remove('hidden');
+    }
+
+    function createJobPost() {
+      const title = document.getElementById('vaga-titulo').value || "Desenvolvedor de Software";
+      const mod = document.getElementById('vaga-modalidade').value;
+      const sal = document.getElementById('vaga-salario').value || "A combinar";
+      const req = document.getElementById('vaga-requisitos').value || "Requisitos gerais";
+
+      const newJob = {
+        id: jobs.length + 1,
+        title: title,
+        company: "Grupo Unique (Sua Empresa)",
+        location: `São Paulo, SP (${mod})`,
+        modality: mod,
+        seniority: "Pleno",
+        salary: sal,
+        match: 94,
+        tags: ["Recém Publicada", "Triagem IA Ativa"],
+        description: req
+      };
+
+      jobs.unshift(newJob);
+      renderJobs(jobs);
+      closeModal('modal-nova-vaga');
+      showToast("Vaga publicada com sucesso! Embeddings vetoriais gerados.");
+      switchTalentosRole('candidato');
+    }
+
+    function openVendorModal(name) {
+      selectedVendorForModal = name;
+      document.getElementById('modal-vendor-title').innerText = `Conexão B2B: ${name}`;
+      document.getElementById('modal-cotacao').classList.remove('hidden');
+    }
+
+    function submitVendorQuote() {
+      closeModal('modal-cotacao');
+      showToast(`Cotação disparada com sucesso para ${selectedVendorForModal} via FCI.`);
+    }
+
+    function openQuoteModal() {
+      document.getElementById('modal-vendor-title').innerText = "Publicar Demanda no Fluxo Comercial Inverso (FCI)";
+      document.getElementById('modal-cotacao').classList.remove('hidden');
+    }
+
+    function respondFCI(buyer) {
+      showToast(`Proposta comercial iniciada com ${buyer}! Canal aberto via WhatsApp B2B.`);
+    }
+
+    function approveCandidate(name) {
+      showToast(`Candidato ${name} aprovado na triagem! Notificação disparada.`);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      renderJobs(jobs);
+      renderCandidates();
+      renderVendara(vendors);
+      renderFCI();
+    });
+  </script>
+</body>
+</html>
